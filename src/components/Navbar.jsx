@@ -3,9 +3,14 @@ import { GoSignOut } from "react-icons/go";
 import useAuth from "../hooks/useAuth";
 import logo from "../../public/foddie.svg";
 import { toast } from "react-toastify";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
+  const [userInfo, setUserInfo] = useState([]);
+
+  // console.log(user?.email);
   const navigate = useNavigate();
   const handleSignOut = async () => {
     await logOut();
@@ -13,10 +18,23 @@ const Navbar = () => {
     navigate("/login");
   };
 
+  useEffect(() => {
+    axios.get(`http://localhost:5000/users?${user?.email}`).then((res) => {
+      // console.log(res.data);
+      setUserInfo(res?.data);
+    });
+  }, [user?.email]);
+
   const navLinks = (
     <>
       <li>
         <NavLink to="/">Home</NavLink>{" "}
+      </li>
+      <li>
+        <NavLink to="/foods">All Foods</NavLink>{" "}
+      </li>
+      <li>
+        <NavLink to="/gallery">Gallery</NavLink>{" "}
       </li>
     </>
   );
@@ -81,7 +99,7 @@ const Navbar = () => {
                 <div className="w-10 rounded-full">
                   <img
                     alt="Tailwind CSS Navbar component"
-                    src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                    src={user.photoURL || userInfo.photo}
                   />
                 </div>
               </div>
