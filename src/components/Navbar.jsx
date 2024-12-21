@@ -25,13 +25,16 @@ const Navbar = () => {
       axios
         .get(`http://localhost:5000/users?email=${user.email}`)
         .then((res) => {
-          setUserInfo(res.data);
+          // console.log(res.data);
+          if (res.data) {
+            setUserInfo(res.data);
+          }
         })
         .catch((error) => {
           console.error("Error fetching user data:", error);
         });
     }
-  }, [user?.email]);
+  }, [user?.email]); // Only re-run if user email changes
 
   // Navigation Links
   const navLinks = (
@@ -57,7 +60,6 @@ const Navbar = () => {
       <li>
         <NavLink to="/add-food">Add Food</NavLink>
       </li>
-
       <li>
         <button onClick={handleSignOut} className="mt-3 bg-base-200">
           <GoSignOut /> Logout
@@ -101,14 +103,14 @@ const Navbar = () => {
           </Link>
         </div>
 
-        {/*  Navbar Center */}
+        {/* Navbar Center */}
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navLinks}</ul>
         </div>
 
-        {/*  Navbar End */}
+        {/* Navbar End */}
         <div className="navbar-end">
-          {/*  Show Loading State */}
+          {/* Show Loading State */}
           {loading ? (
             <span className="loading loading-ring loading-lg"></span>
           ) : user ? (
@@ -121,9 +123,7 @@ const Navbar = () => {
                 <div className="w-10 rounded-full">
                   <img
                     alt="User Avatar"
-                    src={
-                      user.photoURL || userInfo.photo || "/default-avatar.png"
-                    }
+                    src={user?.photoURL || userInfo?.photo}
                   />
                 </div>
               </div>

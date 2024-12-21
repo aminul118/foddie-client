@@ -8,13 +8,13 @@ import axios from "axios";
 import Swal from "sweetalert2";
 
 const Register = () => {
-  const { createUser, updateUserProfil, setUser } = useAuth();
+  const { createUser, setUser, updateUserProfile } = useAuth();
   const [passwordError, setPasswordError] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false); // Toggle Password Visibility
   const navigate = useNavigate();
 
-  // ✅ Real-time Password Validation
+  //  Real-time Password Validation
   const handleValidPassword = (e) => {
     const password = e.target.value;
     setPassword(password);
@@ -68,12 +68,23 @@ const Register = () => {
     try {
       const result = await createUser(email, pass);
       console.log(result);
-      axios.post("http://localhost:5000/users", newUser).then((res) => {
+
+      // Make sure to check for `result.user` before using it
+      const user = result.user;
+
+      // Update user profile after registration
+      await updateUserProfile(name, photo);
+
+      // Update user state with the profile info
+      setUser({ ...user, displayName: name, photoURL: photo });
+
+      // Send the new user's info to your backend API
+      await axios.post("http://localhost:5000/users", newUser).then((res) => {
         console.log(res.data);
         if (res.data?.insertedId) {
           Swal.fire({
             title: "Good job!",
-            text: "Register Successfull!",
+            text: "Registration Successful!",
             icon: "success",
           });
         }
@@ -81,6 +92,11 @@ const Register = () => {
       });
     } catch (err) {
       console.log("ERROR:", err);
+      Swal.fire({
+        title: "Error!",
+        text: err.message,
+        icon: "error",
+      });
     }
   };
 
@@ -89,7 +105,7 @@ const Register = () => {
       <AuthenticationLottie />
       <form
         onSubmit={handleRegister}
-        className="card-body max-w-2xl  rounded-lg shadow-lg"
+        className="card-body max-w-2xl rounded-lg shadow-lg"
         data-aos="fade-left"
       >
         <h1 className="text-5xl font-bold py-6">Register</h1>
@@ -151,7 +167,7 @@ const Register = () => {
             className="px-4 py-3 border focus:outline-none focus:ring-1 ring-blue-400 rounded-lg w-full"
             required
           />
-          {/*  Eye Toggle Button */}
+          {/* Eye Toggle Button */}
           <button
             type="button"
             onClick={() => setShowPassword(!showPassword)}

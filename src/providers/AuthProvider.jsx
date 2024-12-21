@@ -6,9 +6,9 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 import auth from "../firebase/firebase.config";
-import { toast } from "react-toastify";
 
 export const AuthContext = createContext(null);
 
@@ -20,34 +20,44 @@ const AuthProvider = ({ children }) => {
   const createUser = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
+
   // Login
   const login = (email, password) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
-  // login with google
+
+  // Login with Google
   const googleLogin = () => {
     const provider = new GoogleAuthProvider();
     return signInWithPopup(auth, provider);
   };
-  // logout
+
+  // Logout
   const logOut = () => {
-    signOut(auth);
+    return signOut(auth);
   };
+
+  // Update user profile
+  const updateUserProfile = (name, photo) => {
+    return updateProfile(auth.currentUser, {
+      displayName: name,
+      photoURL: photo,
+    });
+  };
+
   // Observer
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
-        console.log(currentUser);
+        console.log("Current User:", currentUser);
         setUser(currentUser);
-        setLoading(false);
       } else {
-        console.log("user sign out");
-        setLoading(false);
+        console.log("User signed out");
+        setUser(null);
       }
+      setLoading(false);
     });
-    return () => {
-      unsubscribe();
-    };
+    return () => unsubscribe();
   }, []);
 
   const authInfo = {
@@ -56,9 +66,11 @@ const AuthProvider = ({ children }) => {
     googleLogin,
     logOut,
     setUser,
+    updateUserProfile,
     user,
     loading,
   };
+
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
   );
