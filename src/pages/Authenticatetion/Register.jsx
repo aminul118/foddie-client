@@ -1,16 +1,18 @@
-import lottieImage from "../../assets/lottie/login.json";
-import Lottie from "lottie-react";
 import SocialLogin from "../../components/SocialLogin";
 import useAuth from "../../hooks/useAuth";
 import { useState } from "react";
 import { FiEye, FiEyeOff } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import AuthenticationLottie from "../../components/AuthenticationLottie";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const { createUser, updateUserProfil, setUser } = useAuth();
   const [passwordError, setPasswordError] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false); // Toggle Password Visibility
+  const navigate = useNavigate();
 
   // ✅ Real-time Password Validation
   const handleValidPassword = (e) => {
@@ -49,6 +51,11 @@ const Register = () => {
     const name = form.name.value;
     const photo = form.photo.value;
     const pass = form.password.value;
+    const newUser = {
+      name,
+      email,
+      photo,
+    };
 
     console.log({ email, pass, name, photo });
 
@@ -61,6 +68,17 @@ const Register = () => {
     try {
       const result = await createUser(email, pass);
       console.log(result);
+      axios.post("http://localhost:5000/users", newUser).then((res) => {
+        console.log(res.data);
+        if (res.data?.insertedId) {
+          Swal.fire({
+            title: "Good job!",
+            text: "Register Successfull!",
+            icon: "success",
+          });
+        }
+        navigate("/login");
+      });
     } catch (err) {
       console.log("ERROR:", err);
     }
@@ -68,7 +86,7 @@ const Register = () => {
 
   return (
     <div className="grid grid-cols-2 items-center container mx-auto min-h-[calc(100vh-304px)]">
-      <Lottie animationData={lottieImage} />
+      <AuthenticationLottie />
       <form
         onSubmit={handleRegister}
         className="card-body max-w-2xl  rounded-lg shadow-lg"

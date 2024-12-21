@@ -1,15 +1,17 @@
-import lottieImage from "../../assets/lottie/login.json";
-import Lottie from "lottie-react";
 import SocialLogin from "../../components/SocialLogin";
 import useAuth from "../../hooks/useAuth";
 import { useState } from "react";
 import { FiEye, FiEyeOff } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import AuthenticationLottie from "../../components/AuthenticationLottie";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const { login } = useAuth();
 
   const [showPassword, setShowPassword] = useState(false); // Toggle Password Visibility
+  const navigate = useNavigate();
+  const [errorMsg, setErrorMsg] = useState("");
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -23,14 +25,17 @@ const Login = () => {
     try {
       const result = await login(email, pass);
       console.log(result);
+      navigate("/");
+      toast.success("Login sucessfully!");
     } catch (err) {
-      console.log("ERROR:", err);
+      // console.log("ERROR:", err.message);
+      setErrorMsg(err?.message);
     }
   };
 
   return (
     <div className="grid grid-cols-2 items-center container mx-auto min-h-[calc(100vh-304px)]">
-      <Lottie animationData={lottieImage} />
+      <AuthenticationLottie />
       <form
         onSubmit={handleLogin}
         className="card-body max-w-2xl  rounded-lg shadow-lg"
@@ -78,6 +83,7 @@ const Login = () => {
               Forgot password?
             </a>
           </label>
+          <p className="text-red-500">{errorMsg}</p>
         </div>
 
         <div className="form-control mt-6">

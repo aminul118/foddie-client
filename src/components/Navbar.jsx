@@ -1,10 +1,17 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { GoSignOut } from "react-icons/go";
 import useAuth from "../hooks/useAuth";
 import logo from "../../public/foddie.svg";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
-  const { user, handleSignOut } = useAuth();
+  const { user, logOut } = useAuth();
+  const navigate = useNavigate();
+  const handleSignOut = async () => {
+    await logOut();
+    toast.success("Sign Out successfully");
+    navigate("/login");
+  };
 
   const navLinks = (
     <>
