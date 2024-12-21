@@ -5,6 +5,8 @@ import Register from "../pages/Authenticatetion/Register";
 import Home from "../pages/Home";
 import AllFoods from "../pages/AllFoods";
 import Gallery from "../pages/Gallery";
+import AddFood from "../pages/AddFood";
+import Profile from "../pages/Profile";
 
 const Router = createBrowserRouter([
   {
@@ -22,6 +24,14 @@ const Router = createBrowserRouter([
       {
         path: "gallery",
         element: <Gallery />,
+      },
+      {
+        path: "add-food",
+        element: <AddFood />,
+      },
+      {
+        path: "profile",
+        element: <Profile />,
       },
       {
         path: "login",

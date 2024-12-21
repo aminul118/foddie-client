@@ -7,53 +7,69 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 const Navbar = () => {
-  const { user, logOut } = useAuth();
-  const [userInfo, setUserInfo] = useState([]);
+  const { user, logOut, loading } = useAuth();
+  const [userInfo, setUserInfo] = useState({});
 
-  // console.log(user?.email);
   const navigate = useNavigate();
+
+  //  Handle User Logout
   const handleSignOut = async () => {
     await logOut();
     toast.success("Sign Out successfully");
     navigate("/login");
   };
 
+  // Fetch User Info
   useEffect(() => {
-    axios.get(`http://localhost:5000/users?${user?.email}`).then((res) => {
-      // console.log(res.data);
-      setUserInfo(res?.data);
-    });
+    if (user?.email) {
+      axios
+        .get(`http://localhost:5000/users?email=${user.email}`)
+        .then((res) => {
+          setUserInfo(res.data);
+        })
+        .catch((error) => {
+          console.error("Error fetching user data:", error);
+        });
+    }
   }, [user?.email]);
 
+  // Navigation Links
   const navLinks = (
     <>
       <li>
-        <NavLink to="/">Home</NavLink>{" "}
+        <NavLink to="/">Home</NavLink>
       </li>
       <li>
-        <NavLink to="/foods">All Foods</NavLink>{" "}
+        <NavLink to="/foods">All Foods</NavLink>
       </li>
       <li>
-        <NavLink to="/gallery">Gallery</NavLink>{" "}
+        <NavLink to="/gallery">Gallery</NavLink>
       </li>
     </>
   );
+
+  // Admin Links
   const adminLinks = (
     <>
       <li>
         <NavLink to="/profile">Profile</NavLink>
       </li>
+      <li>
+        <NavLink to="/add-food">Add Food</NavLink>
+      </li>
 
       <li>
-        <button onClick={handleSignOut} className="mt-3">
+        <button onClick={handleSignOut} className="mt-3 bg-base-200">
           <GoSignOut /> Logout
         </button>
       </li>
     </>
   );
+
   return (
     <div className="sticky top-0 z-50 h-20 flex">
-      <div className="container mx-auto navbar ">
+      <div className="container mx-auto navbar">
+        {/* Navbar Start */}
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -81,15 +97,21 @@ const Navbar = () => {
           </div>
 
           <Link to="/">
-            <img className="w-32" src={logo} alt="" />
+            <img className="w-32" src={logo} alt="Logo" />
           </Link>
         </div>
+
+        {/*  Navbar Center */}
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navLinks}</ul>
         </div>
+
+        {/*  Navbar End */}
         <div className="navbar-end">
-          {/* If user exit then show user profile and dashboard else show login button */}
-          {user ? (
+          {/*  Show Loading State */}
+          {loading ? (
+            <span className="loading loading-ring loading-lg"></span>
+          ) : user ? (
             <div className="dropdown dropdown-end">
               <div
                 tabIndex={0}
@@ -98,8 +120,10 @@ const Navbar = () => {
               >
                 <div className="w-10 rounded-full">
                   <img
-                    alt="Tailwind CSS Navbar component"
-                    src={user.photoURL || userInfo.photo}
+                    alt="User Avatar"
+                    src={
+                      user.photoURL || userInfo.photo || "/default-avatar.png"
+                    }
                   />
                 </div>
               </div>
