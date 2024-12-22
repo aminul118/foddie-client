@@ -8,17 +8,16 @@ const AllFoods = () => {
   const { data, isLoading, error } = useQuery({
     queryKey: ["foods"],
     queryFn: () =>
-      axios.get("http://localhost:5000/foods").then((res) => {
+      axios.get("http://localhost:5000/all-foods").then((res) => {
         // console.log(res.data);
         return res.data; //  Return the data here
       }),
   });
 
-  //   if (isLoading) return <div>Loading...</div>;
-  //   if (error) return <div>Error: {error.message}</div>;
+  if (error) return <div>Error: {error.message}</div>;
 
-  //   console.log("Fetched data", data);
-  //   console.log(isLoading);
+  console.log("Fetched data", data);
+  console.log(isLoading);
   if (isLoading) {
     return <Loading />;
   }
@@ -32,7 +31,7 @@ const AllFoods = () => {
       </div>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 lg:gap-6">
-        {data.map((food) => (
+        {data?.map((food) => (
           <FoodCard food={food} key={food._id} />
         ))}
       </div>

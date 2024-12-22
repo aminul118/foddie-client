@@ -1,7 +1,7 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { GoSignOut } from "react-icons/go";
 import useAuth from "../hooks/useAuth";
-import logo from "../../public/foddie.svg";
+import logo from "/foddie.svg";
 import { toast } from "react-toastify";
 import { useEffect, useState } from "react";
 import axios from "axios";
