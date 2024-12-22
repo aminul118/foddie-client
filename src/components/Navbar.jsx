@@ -69,7 +69,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="sticky top-0 z-50 h-20 flex">
+    <div className="sticky top-0 z-50 h-20 flex backdrop-blur-lg">
       <div className="container mx-auto navbar">
         {/* Navbar Start */}
         <div className="navbar-start">

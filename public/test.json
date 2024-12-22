@@ -1,0 +1,154 @@
+[
+  {
+    "food_name": "Margherita Pizza",
+    "food_image": "https://i.ibb.co.com/TBySz1h/images.jpg",
+    "food_category": "Italian",
+    "quantity": 15,
+    "price": 12.99,
+    "origin": "Italy",
+    "ingredients": [
+      "Flour",
+      "Tomato Sauce",
+      "Mozzarella Cheese",
+      "Basil",
+      "Olive Oil"
+    ],
+    "purchased_count": 0,
+    "addedBy": {
+      "userName": "MD AMINUL ISLAM",
+      "email": "mr.aminul118@gmail.com"
+    }
+  },
+  {
+    "food_name": "Sushi Platter",
+    "food_image": "https://i.ibb.co.com/hDG3mCC/download.jpg",
+    "food_category": "Japanese",
+    "quantity": 12,
+    "price": 24.5,
+    "origin": "Japan",
+    "ingredients": ["Rice", "Nori", "Salmon", "Avocado", "Soy Sauce"],
+    "purchased_count": 0,
+    "addedBy": {
+      "userName": "MD AMINUL ISLAM",
+      "email": "mr.aminul118@gmail.com"
+    }
+  },
+  {
+    "food_name": "Butter Chicken",
+    "food_image": "https://i.ibb.co.com/6BbQrC1/AR-141169-Easy-Indian-Butter-Chicken-DDMFS-4x3-beauty-588ff54d1e0f4a0788906e851e27d540.jpg",
+    "food_category": "Indian",
+    "quantity": 14,
+    "price": 15.75,
+    "origin": "India",
+    "ingredients": ["Chicken", "Butter", "Tomato Puree", "Cream", "Spices"],
+    "purchased_count": 0,
+    "addedBy": {
+      "userName": "MD AMINUL ISLAM",
+      "email": "mr.aminul118@gmail.com"
+    }
+  },
+  {
+    "food_name": "Tacos",
+    "food_image": "https://i.ibb.co.com/w0vyQd9/wpt10.jpg",
+    "food_category": "Mexican",
+    "quantity": 13,
+    "price": 9.99,
+    "origin": "Mexico",
+    "ingredients": ["Tortilla", "Beef", "Lettuce", "Tomato", "Cheese"],
+    "purchased_count": 0,
+    "addedBy": {
+      "userName": "MD AMINUL ISLAM",
+      "email": "mr.aminul118@gmail.com"
+    }
+  },
+  {
+    "food_name": "Croissant",
+    "food_image": "https://i.ibb.co.com/h1p9gvx/Croissants-20-500x500.webp",
+    "food_category": "French",
+    "quantity": 11,
+    "price": 4.5,
+    "origin": "France",
+    "ingredients": ["Flour", "Butter", "Yeast", "Sugar", "Milk"],
+    "purchased_count": 0,
+    "addedBy": {
+      "userName": "MD AMINUL ISLAM",
+      "email": "mr.aminul118@gmail.com"
+    }
+  },
+  {
+    "food_name": "Pad Thai",
+    "food_image": "https://i.ibb.co.com/0C6W5LH/EWL-shrimp-pad-thai-step-05-1190-87e6eec4f9ec48f288489d7f06ea01fc.jpg",
+    "food_category": "Thai",
+    "quantity": 12,
+    "price": 11.25,
+    "origin": "Thailand",
+    "ingredients": ["Rice Noodles", "Shrimp", "Egg", "Tofu", "Peanuts"],
+    "purchased_count": 0,
+    "addedBy": {
+      "userName": "MD AMINUL ISLAM",
+      "email": "mr.aminul118@gmail.com"
+    }
+  },
+  {
+    "food_name": "Cheeseburger",
+    "food_image": "https://i.ibb.co.com/0CqP96R/download.jpg",
+    "food_category": "American",
+    "quantity": 14,
+    "price": 8.99,
+    "origin": "USA",
+    "ingredients": ["Beef Patty", "Cheese", "Lettuce", "Tomato", "Pickles"],
+    "purchased_count": 0,
+    "addedBy": {
+      "userName": "MD AMINUL ISLAM",
+      "email": "mr.aminul118@gmail.com"
+    }
+  },
+  {
+    "food_name": "Falafel Wrap",
+    "food_image": "https://i.ibb.co.com/Tb387fG/download.jpg",
+    "food_category": "Middle Eastern",
+    "quantity": 15,
+    "price": 7.5,
+    "origin": "Middle East",
+    "ingredients": ["Chickpeas", "Garlic", "Onion", "Parsley", "Pita Bread"],
+    "purchased_count": 0,
+    "addedBy": {
+      "userName": "MD AMINUL ISLAM",
+      "email": "mr.aminul118@gmail.com"
+    }
+  },
+  {
+    "food_name": "Fish and Chips",
+    "food_image": "https://i.ibb.co.com/6JKbZ0m/1531159996001.webp",
+    "food_category": "British",
+    "quantity": 12,
+    "price": 13.99,
+    "origin": "United Kingdom",
+    "ingredients": ["Fish Fillet", "Potatoes", "Batter", "Salt", "Vinegar"],
+    "purchased_count": 0,
+    "addedBy": {
+      "userName": "MD AMINUL ISLAM",
+      "email": "mr.aminul118@gmail.com"
+    }
+  },
+  {
+    "food_name": "Peking Duck",
+    "food_image": "https://i.ibb.co.com/4f8BP8x/Philippe-Chow-Peking-Duck-1.jpg",
+    "food_category": "Chinese",
+    "quantity": 13,
+    "price": 28.5,
+    "origin": "China",
+    "ingredients": [
+      "Duck",
+      "Hoisin Sauce",
+      "Spring Onion",
+      "Cucumber",
+      "Pancakes"
+    ],
+    "purchased_count": 0,
+    "addedBy": {
+      "userName": "MD AMINUL ISLAM",
+      "email": "mr.aminul118@gmail.com"
+    }
+  }
+]

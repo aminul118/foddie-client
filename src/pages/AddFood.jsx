@@ -1,17 +1,33 @@
+import axios from "axios";
 import useAuth from "../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const AddFood = () => {
   const { user } = useAuth();
-  const handleAddFood = (e) => {
+  const handleAddFood = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const initialData = Object.fromEntries(formData.entries());
-    const userName = user?.name;
+    const userName = user?.displayName;
     const email = user?.email;
- 
 
+    initialData.ingredients = initialData.ingredients.split("\n");
+    initialData.addedBy = { userName, email };
+    initialData.purchased_count = 0;
 
     console.log(initialData);
+    await axios
+      .post("http://localhost:5000/add-food", initialData)
+      .then((res) => {
+        console.log(res.data);
+        if (res.data.insertedId) {
+          Swal.fire({
+            title: "Good job!",
+            text: "Product added successfully!",
+            icon: "success",
+          });
+        }
+      });
   };
   return (
     <div>
@@ -28,7 +44,7 @@ const AddFood = () => {
           </label>
           <input
             type="text"
-            name="name"
+            name="food_name"
             placeholder="Enter Food Name"
             className="px-4 py-3 border focus:outline-none focus:ring-1 ring-blue-400 rounded-lg"
             required
@@ -40,8 +56,8 @@ const AddFood = () => {
             <span className="label-text">Image URL</span>
           </label>
           <input
-            type="text"
-            name="image"
+            type="url"
+            name="food_image"
             placeholder="Image URL"
             className="px-4 py-3 border focus:outline-none focus:ring-1 ring-blue-400 rounded-lg"
             required
@@ -54,7 +70,7 @@ const AddFood = () => {
           </label>
           <input
             type="text"
-            name="category"
+            name="food_category"
             placeholder="Food Category"
             className="px-4 py-3 border focus:outline-none focus:ring-1 ring-blue-400 rounded-lg"
             required
@@ -99,15 +115,15 @@ const AddFood = () => {
             required
           />
         </div>
-        {/* Discription */}
+        {/* Ingredients */}
         <div className="form-control col-span-2">
           <label htmlFor="name" className="label">
-            <span className="label-text">Short Discription</span>
+            <span className="label-text">Ingredients</span>
           </label>
           <textarea
             type="text"
-            name="discription"
-            placeholder="Short Discription"
+            name="ingredients"
+            placeholder="Ingredients"
             className="px-4 py-3 border focus:outline-none focus:ring-1 ring-blue-400 rounded-lg resize-none h-48"
             required
           />
