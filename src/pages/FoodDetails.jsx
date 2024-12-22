@@ -1,10 +1,11 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import coins from "../../src/assets/icons/coins.png";
 import dollar from "../../src/assets/icons/dollar.png";
 import cart from "../../src/assets/icons/shopping-cart.png";
 import { CiForkAndKnife } from "react-icons/ci";
 const FoodDetails = () => {
   const food = useLoaderData();
+  const navigate = useNavigate();
   const {
     food_name,
     food_image,
@@ -18,6 +19,9 @@ const FoodDetails = () => {
     _id,
   } = food;
   console.log(food);
+  const handleOrder = () => {
+    navigate("/purchases");
+  };
   return (
     <div className="min-h-[calc(100vh-304px)] flex items-center">
       <div className="card bg-base-100 max-w-2xl mx-auto border p-8 ">
@@ -59,7 +63,9 @@ const FoodDetails = () => {
               {purchased_count}
             </p>
           </div>
-          <button className="btn-warning btn w-full mt-3">Order Now</button>
+          <button onClick={handleOrder} className="btn-warning btn w-full mt-3">
+            Order Now
+          </button>
         </div>
       </div>
     </div>

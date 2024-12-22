@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Loading from "../components/Loading";
 import FoodCard from "../components/FoodCard";
+import SectionBanner from "../components/SectionBanner";
 
 const AllFoods = () => {
   const { data, isLoading, error } = useQuery({
@@ -23,6 +24,13 @@ const AllFoods = () => {
   }
   return (
     <div>
+      <div className="mb-12">
+        <SectionBanner
+          image="https://i.ibb.co.com/BNj67Kt/Menu.png"
+          Heading="All Foods"
+        />
+      </div>
+
       <div className="grid md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 lg:gap-6">
         {data.map((food) => (
           <FoodCard food={food} key={food._id} />

@@ -8,6 +8,9 @@ import Gallery from "../pages/Gallery";
 import AddFood from "../pages/AddFood";
 import Profile from "../pages/Profile";
 import FoodDetails from "../pages/FoodDetails";
+import FoodPurchases from "../pages/FoodPurchases";
+import MyOrders from "../pages/MyOrders";
+import MyFoods from "../pages/MyFoods";
 
 const Router = createBrowserRouter([
   {
@@ -35,6 +38,18 @@ const Router = createBrowserRouter([
         element: <FoodDetails />,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/food/${params.id}`),
+      },
+      {
+        path: "purchases",
+        element: <FoodPurchases />,
+      },
+      {
+        path: "my-orders",
+        element: <MyOrders />,
+      },
+      {
+        path: "my-foods",
+        element: <MyFoods />,
       },
       {
         path: "profile",
