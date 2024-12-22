@@ -66,9 +66,7 @@ const Navbar = () => {
       <li>
         <NavLink to="/my-orders">My Orders</NavLink>
       </li>
-      <li>
-        <NavLink to="/purchases">Food Purchases</NavLink>
-      </li>
+
       <li>
         <button onClick={handleSignOut} className="mt-3 bg-base-200">
           <GoSignOut /> Logout
