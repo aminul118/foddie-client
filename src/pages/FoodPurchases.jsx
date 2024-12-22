@@ -31,8 +31,6 @@ const FoodPurchases = () => {
     enabled: !!id, // Ensures the query only runs if `id` exists
   });
 
-
-
   if (isLoading) return <Loading />;
   if (error) return <div className="text-red-500">Error: {error.message}</div>;
 
@@ -83,6 +81,13 @@ const FoodPurchases = () => {
         icon: "warning",
         title: "Invalid Quantity",
         text: "Please choose a quantity between 1 and 20.",
+      });
+    }
+    if (orderQuantity > quantity) {
+      return Swal.fire({
+        icon: "warning",
+        title: "Invalid Quantity",
+        text: "Please choose  quantity equal or less than Available Quantity ",
       });
     }
 

@@ -25,6 +25,7 @@ const MyOrders = () => {
     },
     enabled: !!user?.email, // Prevents the query if email is not available
   });
+  console.log(orders);
 
   // Delete an order
   const deleteMutation = useMutation({
@@ -85,6 +86,7 @@ const MyOrders = () => {
             <th>Food Name & Category</th>
             <th>Buyer Info</th>
             <th>Order Date & Time</th>
+            <th>Quantity</th>
             <th>Food Owner</th>
             <th>Actions</th>
           </tr>
@@ -94,11 +96,7 @@ const MyOrders = () => {
         <tbody>
           {orders?.map((food, i) => (
             <tr key={food._id}>
-              <th>
-                <label>
-                  <input type="checkbox" className="checkbox" />
-                </label>
-              </th>
+              <th>{i + 1}</th>
               <td>
                 <div className="flex items-center gap-3">
                   <div className="avatar">
@@ -127,6 +125,7 @@ const MyOrders = () => {
                   {food.buingTime}
                 </span>
               </td>
+              <td>{food.orderQuantity}</td>
               <td>
                 {food.addedBy.userName}
                 <br />
