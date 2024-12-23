@@ -3,6 +3,7 @@ import axios from "axios";
 import Loading from "../components/Loading";
 import FoodCard from "../components/FoodCard";
 import SectionBanner from "../components/SectionBanner";
+import SearchBar from "../components/SearchBar";
 
 const AllFoods = () => {
   const { data, isLoading, error } = useQuery({
@@ -16,8 +17,6 @@ const AllFoods = () => {
 
   if (error) return <div>Error: {error.message}</div>;
 
-  console.log("Fetched data", data);
-  console.log(isLoading);
   if (isLoading) {
     return <Loading />;
   }
@@ -28,6 +27,10 @@ const AllFoods = () => {
           image="https://i.ibb.co.com/BNj67Kt/Menu.png"
           Heading="All Foods"
         />
+      </div>
+      <div>
+        <SearchBar/>
+
       </div>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 lg:gap-6">

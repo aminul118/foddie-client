@@ -14,8 +14,8 @@ const Home = () => {
         <TopSellingProducts />
         <WhyFoddie />
         <CustomerReview />
-      <FAQ/>
-        <NewsLetterForm/>
+        <FAQ />
+        <NewsLetterForm />
       </div>
     </div>
   );

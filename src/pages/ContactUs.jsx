@@ -44,11 +44,11 @@ const ContactUs = () => {
   };
 
   return (
-    <section className="w-full min-h-[calc(100vh-304px)] flex items-center justify-center bg-gray-100">
-      <div className="w-full max-w-6xl rounded-xl p-6 lg:p-10 shadow-md bg-white">
+    <section className="w-full min-h-[calc(100vh-304px)] flex items-center justify-center ">
+      <div className="w-full max-w-6xl rounded-xl p-6 lg:p-10  ">
         <div className="flex flex-col lg:flex-row gap-10 items-start justify-between">
           {/* Left Side: Contact Form */}
-          <div className="w-full lg:w-1/2 bg-gray-50 p-6 rounded-md shadow-sm">
+          <div className="w-full lg:w-1/2  p-6 rounded-md shadow-sm">
             <h2 className="text-2xl sm:text-3xl font-bold text-[#FF354D] mb-4">
               Get in Touch
             </h2>
@@ -88,7 +88,7 @@ const ContactUs = () => {
           </div>
 
           {/* Right Side: Contact Information */}
-          <div className="w-full lg:w-1/2 bg-white p-6 rounded-md shadow-sm">
+          <div className="w-full lg:w-1/2  p-6 rounded-md ">
             <h2 className="text-2xl sm:text-3xl font-bold text-[#FF354D] mb-4">
               Contact Information
             </h2>
