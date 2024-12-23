@@ -5,17 +5,16 @@ import Loading from "../components/Loading";
 import SectionBanner from "../components/SectionBanner";
 import { TbEdit } from "react-icons/tb";
 import { Link } from "react-router-dom";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const MyFoods = () => {
   const { user } = useAuth();
+  const axiosSecure = useAxiosSecure();
 
   const { data, isLoading, error } = useQuery({
     queryKey: ["myFoods", user?.email],
     queryFn: async () => {
-      const response = await axios.get(
-        `http://localhost:5000/foods?email=${user?.email}`,
-        { withCredentials: true }
-      );
+      const response = await axiosSecure.get(`/foods?email=${user?.email}`);
       return response.data;
     },
     enabled: !!user?.email,
@@ -29,7 +28,7 @@ const MyFoods = () => {
     return <div className="text-red-500">Error: {error.message}</div>;
   }
 
-  console.log(data);
+  // console.log(data);
 
   return (
     <div>

@@ -2,7 +2,7 @@ import SocialLogin from "../../components/SocialLogin";
 import useAuth from "../../hooks/useAuth";
 import { useState } from "react";
 import { FiEye, FiEyeOff } from "react-icons/fi";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import AuthenticationLottie from "../../components/AuthenticationLottie";
 import { toast } from "react-toastify";
 
@@ -12,6 +12,8 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false); // Toggle Password Visibility
   const navigate = useNavigate();
   const [errorMsg, setErrorMsg] = useState("");
+  const location = useLocation();
+  // console.log(location);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -25,7 +27,10 @@ const Login = () => {
     try {
       const result = await login(email, pass);
       console.log(result);
-      navigate("/");
+
+      {
+        location.state ? navigate(location.state) : navigate("/");
+      }
       toast.success("Login sucessfully!");
     } catch (err) {
       // console.log("ERROR:", err.message);

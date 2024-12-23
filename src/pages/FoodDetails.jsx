@@ -19,7 +19,7 @@ const FoodDetails = () => {
     addedBy,
     _id,
   } = food;
-  console.log(food);
+  // console.log(food);
 
   return (
     <div className="min-h-[calc(100vh-304px)] flex items-center">

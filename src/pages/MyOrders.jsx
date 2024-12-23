@@ -4,10 +4,12 @@ import axios from "axios";
 import Loading from "../components/Loading";
 import { MdDeleteForever } from "react-icons/md";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const MyOrders = () => {
   const { user } = useAuth();
   const queryClient = useQueryClient();
+  const axiosSecure = useAxiosSecure();
 
   /** 📦 Fetch Orders */
   const {
@@ -18,10 +20,7 @@ const MyOrders = () => {
   } = useQuery({
     queryKey: ["my-orders", user?.email],
     queryFn: async () => {
-      const result = await axios.get(
-        `http://localhost:5000/my-orders?email=${user?.email}`,
-        { withCredentials: true }
-      );
+      const result = await axiosSecure.get(`/my-orders?email=${user?.email}`);
       return result.data;
     },
     enabled: !!user?.email, // Prevents the query if email is not available
@@ -30,9 +29,7 @@ const MyOrders = () => {
   /** 📦 Delete Order Mutation */
   const deleteMutation = useMutation({
     mutationFn: async (id) => {
-      return await axios.delete(`http://localhost:5000/order/${id}`, {
-        withCredentials: true,
-      });
+      return await axiosSecure.delete(`/order/${id}`);
     },
     onSuccess: (_, id) => {
       // Remove the deleted order from cache

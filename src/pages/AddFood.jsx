@@ -1,9 +1,11 @@
 import axios from "axios";
 import useAuth from "../hooks/useAuth";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const AddFood = () => {
   const { user } = useAuth();
+  const axiosSecure = useAxiosSecure();
   const handleAddFood = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
@@ -16,20 +18,16 @@ const AddFood = () => {
     initialData.purchased_count = 0;
 
     console.log(initialData);
-    await axios
-      .post("http://localhost:5000/add-food", initialData, {
-        withCredentials: true,
-      })
-      .then((res) => {
-        console.log(res.data);
-        if (res.data.insertedId) {
-          Swal.fire({
-            title: "Good job!",
-            text: "Product added successfully!",
-            icon: "success",
-          });
-        }
-      });
+    await axiosSecure.post("/add-food", initialData).then((res) => {
+      // console.log(res.data);
+      if (res.data.insertedId) {
+        Swal.fire({
+          title: "Good job!",
+          text: "Product added successfully!",
+          icon: "success",
+        });
+      }
+    });
   };
   return (
     <div>
