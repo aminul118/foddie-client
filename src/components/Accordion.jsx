@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Heading from "./Heading";
+
 
 const Accordion = () => {
   const [openIndex, setOpenIndex] = useState(0);
@@ -35,9 +35,7 @@ const Accordion = () => {
 
   return (
     <div className="rounded-lg overflow-hidden ">
-      <div className="py-8 lg:py-12">
-        <Heading heading="Frquently Ask Questions" />
-      </div>
+     
 
       {accordionData.map((item, index) => (
         <div

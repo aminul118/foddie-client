@@ -13,6 +13,7 @@ import MyOrders from "../pages/MyOrders";
 import MyFoods from "../pages/MyFoods";
 import PrivateRoute from "./PrivateRoute";
 import UpdateFood from "../pages/UpdateFood";
+import ContactUs from "../pages/ContactUs";
 
 const Router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ const Router = createBrowserRouter([
       {
         path: "gallery",
         element: <Gallery />,
+      },
+      {
+        path: "contact",
+        element: <ContactUs />,
       },
       {
         path: "add-food",

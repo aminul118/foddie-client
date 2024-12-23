@@ -2,7 +2,9 @@ import CustomerReview from "../components/CustomerReview";
 import HeroBanner from "../components/HeroBanner";
 import WhyFoddie from "../components/WhyFoddie";
 import TopSellingProducts from "../components/TopSellingProducts";
-import Accordion from "../components/Accordion";
+
+import NewsLetterForm from "../components/NewsLetterForm";
+import FAQ from "../components/FAQ";
 
 const Home = () => {
   return (
@@ -11,8 +13,9 @@ const Home = () => {
       <div className="px-2 ">
         <TopSellingProducts />
         <WhyFoddie />
-        <Accordion />
         <CustomerReview />
+      <FAQ/>
+        <NewsLetterForm/>
       </div>
     </div>
   );
