@@ -9,7 +9,7 @@ const MyOrders = () => {
   const { user } = useAuth();
   const queryClient = useQueryClient();
 
-  // Fetch orders
+  /** 📦 Fetch Orders */
   const {
     data: orders,
     isLoading,
@@ -19,21 +19,23 @@ const MyOrders = () => {
     queryKey: ["my-orders", user?.email],
     queryFn: async () => {
       const result = await axios.get(
-        `http://localhost:5000/my-orders?email=${user?.email}`
+        `http://localhost:5000/my-orders?email=${user?.email}`,
+        { withCredentials: true }
       );
       return result.data;
     },
     enabled: !!user?.email, // Prevents the query if email is not available
   });
-  console.log(orders);
 
-  // Delete an order
+  /** 📦 Delete Order Mutation */
   const deleteMutation = useMutation({
     mutationFn: async (id) => {
-      await axios.delete(`http://localhost:5000/order/${id}`);
+      return await axios.delete(`http://localhost:5000/order/${id}`, {
+        withCredentials: true,
+      });
     },
-    onSuccess: (data, id) => {
-      // Optimistically update the cache
+    onSuccess: (_, id) => {
+      // Remove the deleted order from cache
       queryClient.setQueryData(["my-orders", user?.email], (oldData) =>
         oldData.filter((order) => order._id !== id)
       );
@@ -55,11 +57,11 @@ const MyOrders = () => {
     },
   });
 
-  // Handle Delete
+  /** 📦 Handle Delete Confirmation */
   const handleDelete = (id) => {
     Swal.fire({
       title: "Are you sure?",
-      text: "You won't be able to revert this action!",
+      text: "This action cannot be undone!",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#d33",
@@ -73,78 +75,97 @@ const MyOrders = () => {
     });
   };
 
+  /** 📦 Loading & Error States */
   if (isLoading) return <Loading />;
-  if (isError) return <div>Error: {error.message}</div>;
+  if (isError) {
+    return (
+      <div className="text-red-500 text-center mt-5">
+        Error: {error.message}
+      </div>
+    );
+  }
 
+  /** 📦 Render Orders */
   return (
-    <div className="overflow-x-auto">
-      <table className="table">
-        {/* Table Head */}
-        <thead>
-          <tr>
-            <th>SI</th>
-            <th>Food Name & Category</th>
-            <th>Buyer Info</th>
-            <th>Order Date & Time</th>
-            <th>Quantity</th>
-            <th>Food Owner</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-
-        {/* Table Body */}
-        <tbody>
-          {orders?.map((food, i) => (
-            <tr key={food._id}>
-              <th>{i + 1}</th>
-              <td>
-                <div className="flex items-center gap-3">
-                  <div className="avatar">
-                    <div className="mask mask-squircle h-12 w-12">
-                      <img src={food.food_image} alt={food.food_name} />
-                    </div>
-                  </div>
-                  <div>
-                    <div className="font-bold">{food.food_name}</div>
-                    <div className="text-sm opacity-50">
-                      {food.food_category}
-                    </div>
-                  </div>
-                </div>
-              </td>
-              <td>
-                {food.buyerName}
-                <br />
-                <span className="badge badge-ghost badge-sm">
-                  {food.buyerEmail}
-                </span>
-              </td>
-              <td>
-                {food.buingDate} <br />
-                <span className="badge badge-ghost badge-sm">
-                  {food.buingTime}
-                </span>
-              </td>
-              <td>{food.orderQuantity}</td>
-              <td>
-                {food.addedBy.userName}
-                <br />
-                <span className="badge badge-ghost badge-sm">
-                  {food.addedBy.email}
-                </span>
-              </td>
-              <td>
-                <button
-                  onClick={() => handleDelete(food._id)}
-                  className="text-3xl text-red-500"
-                >
-                  <MdDeleteForever />
-                </button>
-              </td>
+    <div className="overflow-x-auto p-4">
+      <h2 className="text-2xl font-bold mb-4 text-center">My Orders</h2>
+      {orders?.length === 0 ? (
+        <p className="text-center text-gray-500">No orders found.</p>
+      ) : (
+        <table className="table-auto w-full border-collapse border border-gray-300 ">
+          {/* Table Head */}
+          <thead>
+            <tr className="bg-gray-100">
+              <th className="p-2 border">SI</th>
+              <th className="p-2 border">Food Details</th>
+              <th className="p-2 border">Buyer Info</th>
+              <th className="p-2 border">Order Date & Time</th>
+              <th className="p-2 border">Quantity</th>
+              <th className="p-2 border">Food Owner</th>
+              <th className="p-2 border">Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+
+          {/* Table Body */}
+          <tbody>
+            {orders?.map((food, i) => (
+              <tr key={food._id} className="hover:bg-gray-50">
+                <th className="p-2 border text-center">{i + 1}</th>
+                <td className="p-2 border">
+                  <div className="flex items-center gap-3">
+                    <div className="avatar">
+                      <div className="mask mask-squircle h-12 w-12">
+                        <img
+                          src={food.food_image}
+                          alt={food.food_name}
+                          className="object-cover"
+                        />
+                      </div>
+                    </div>
+                    <div>
+                      <div className="font-bold">{food.food_name}</div>
+                      <div className="text-sm text-gray-500">
+                        {food.food_category}
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td className="p-2 border text-center">
+                  {food.buyerName}
+                  <br />
+                  <span className="text-xs text-gray-500">
+                    {food.buyerEmail}
+                  </span>
+                </td>
+                <td className="p-2 border text-center">
+                  {food.buyingDate}
+                  <br />
+                  <span className="text-xs text-gray-500">
+                    {food.buyingTime}
+                  </span>
+                </td>
+                <td className="p-2 border text-center">{food.orderQuantity}</td>
+                <td className="p-2 border text-center">
+                  {food.addedBy.userName}
+                  <br />
+                  <span className="text-xs text-gray-500">
+                    {food.addedBy.email}
+                  </span>
+                </td>
+                <td className="p-2 border text-center">
+                  <button
+                    onClick={() => handleDelete(food._id)}
+                    className="text-3xl text-red-500 hover:text-red-700"
+                    title="Delete Order"
+                  >
+                    <MdDeleteForever />
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
     </div>
   );
 };

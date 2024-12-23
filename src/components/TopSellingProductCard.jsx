@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const TopSellingProductCard = ({ food }) => {
   const { food_image, food_name, purchased_count, food_category, _id } = food;
-  console.log(food);
+  // console.log(food);
   return (
     <div className="w-full  h-[350px] relative overflow-hidden group cursor-pointer rounded-md">
       {/*  image  */}

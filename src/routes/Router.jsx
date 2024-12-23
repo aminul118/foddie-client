@@ -38,7 +38,11 @@ const Router = createBrowserRouter([
       },
       {
         path: "add-food",
-        element: <AddFood />,
+        element: (
+          <PrivateRoute>
+            <AddFood />
+          </PrivateRoute>
+        ),
       },
       {
         path: "food-details/:id",
@@ -78,7 +82,11 @@ const Router = createBrowserRouter([
       },
       {
         path: "profile",
-        element: <Profile />,
+        element: (
+          <PrivateRoute>
+            <Profile />
+          </PrivateRoute>
+        ),
       },
       {
         path: "login",

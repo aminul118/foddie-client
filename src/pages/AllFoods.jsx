@@ -10,10 +10,10 @@ const AllFoods = () => {
   const [filter, setFilter] = useState("");
 
   const { data, isLoading, error } = useQuery({
-    queryKey: ["allfoods", filter, search], // Dynamic query key includes filter and search
+    queryKey: ["allfoods", search], // Dynamic query key includes filter and search
     queryFn: async () => {
       const response = await axios.get(`http://localhost:5000/all-foods`, {
-        params: { filter, search }, // Use axios params for cleaner query string handling
+        params: { search }, // Use axios params for cleaner query string handling
       });
       return response.data;
     },

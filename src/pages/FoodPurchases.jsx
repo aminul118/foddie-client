@@ -21,7 +21,7 @@ const FoodPurchases = () => {
   const [orderQuantity, setOrderQuantity] = useState(0);
   const [errorMsg, setErrorMsg] = useState("");
 
-  // Fetch Food Data
+  /** 📦 Fetch Food Data **/
   const { data, isLoading, error } = useQuery({
     queryKey: ["foodData", id],
     queryFn: async () => {
@@ -44,9 +44,10 @@ const FoodPurchases = () => {
     addedBy,
   } = data;
 
-  const buyerName = user?.displayName;
-  const buyerEmail = user?.email;
+  const buyerName = user?.displayName || "Guest";
+  const buyerEmail = user?.email || "guest@example.com";
 
+  /** 📦 Create New Order Object **/
   const newOrder = {
     buyerName,
     buyerEmail,
@@ -55,17 +56,18 @@ const FoodPurchases = () => {
     food_category,
     price,
     addedBy,
-    buingDate: date,
-    buingTime: time,
+    buyingDate: date,
+    buyingTime: time,
     food_id: id,
     orderQuantity,
   };
 
-  // Handle Quantity Change
+  /** 📦 Handle Quantity Change **/
   const handleQuantity = (e) => {
     const value = parseInt(e.target.value, 10) || 0;
+
     if (value > 20) {
-      setErrorMsg("* You cannot buy more than 20 foods.");
+      setErrorMsg("* You cannot buy more than 20 items.");
     } else if (value < 1) {
       setErrorMsg("* Order quantity must be at least 1.");
     } else {
@@ -74,7 +76,7 @@ const FoodPurchases = () => {
     }
   };
 
-  // Handle Order Submission
+  /** 📦 Handle Order Submission **/
   const handleOrder = () => {
     if (orderQuantity < 1 || orderQuantity > 20) {
       return Swal.fire({
@@ -83,18 +85,21 @@ const FoodPurchases = () => {
         text: "Please choose a quantity between 1 and 20.",
       });
     }
+
     if (orderQuantity > quantity) {
       return Swal.fire({
         icon: "warning",
-        title: "Invalid Quantity",
-        text: "Please choose  quantity equal or less than Available Quantity ",
+        title: "Insufficient Stock",
+        text: "The requested quantity exceeds available stock.",
       });
     }
 
     axios
-      .post("http://localhost:5000/order", newOrder)
+      .post("http://localhost:5000/order", newOrder, {
+        withCredentials: true,
+      })
       .then((res) => {
-        if (res.data.insertedId) {
+        if (res.status === 201) {
           Swal.fire({
             title: "Success!",
             text: "Your order has been placed successfully.",
@@ -108,16 +113,17 @@ const FoodPurchases = () => {
       .catch((err) => {
         Swal.fire({
           title: "Error",
-          text: err.response.data,
+          text: err.response?.data?.message || "Failed to place order.",
           icon: "error",
         });
-        // console.log(err.response.data);
       });
   };
 
+  /** 📦 JSX UI **/
   return (
     <div className="min-h-[calc(100vh-304px)] flex items-center">
-      <div className="card bg-base-100 max-w-2xl mx-auto border p-8">
+      <div className="card bg-base-100 max-w-2xl mx-auto border p-8 rounded-lg shadow-md">
+        {/* Food Image */}
         <figure>
           <img
             className="w-[800px] h-96 rounded-xl object-cover"
@@ -125,39 +131,44 @@ const FoodPurchases = () => {
             alt={food_name}
           />
         </figure>
-        <div className="mt-3">
+
+        {/* Food Details */}
+        <div className="mt-5">
+          {/* Ingredients */}
           <div className="flex gap-2 flex-wrap mt-2">
-            {ingredients.map((ingredient, i) => (
+            {ingredients?.map((ingredient, i) => (
               <div
                 key={i}
-                className="badge badge-outline hover:cursor-pointer hover:bg-blue-500 hover:text-base-100"
+                className="badge badge-outline hover:cursor-pointer hover:bg-blue-500 hover:text-white"
               >
                 {ingredient}
               </div>
             ))}
           </div>
-          <div className="space-y-1 mt-3">
-            <h2 className="card-title">{food_name}</h2>
 
+          {/* Details Section */}
+          <div className="space-y-2 mt-4">
+            <h2 className="card-title text-2xl">{food_name}</h2>
             <p className="flex items-center gap-2">
-              <img className="w-4 h-4" src={dollar} alt="" /> Price: ${price}
+              <img className="w-4 h-4" src={dollar} alt="Price" />
+              Price: ${price}
             </p>
             <p className="flex items-center gap-2">
-              <img className="w-4 h-4" src={coins} alt="" />
+              <img className="w-4 h-4" src={coins} alt="Quantity" />
               Available Quantity: {quantity}
             </p>
             {quantity === 0 && (
               <p className="text-red-500">
-                * You can not buy this item. Because that this item is not
-                available now
+                * This item is currently out of stock.
               </p>
             )}
             <p>Buyer Name: {buyerName}</p>
             <p>Buyer Email: {buyerEmail}</p>
             <p>Buying Date: {date}</p>
+
+            {/* Order Quantity */}
             <div className="flex items-center gap-2">
               <p>Order Quantity:</p>
-
               <input
                 onChange={handleQuantity}
                 type="number"
@@ -169,11 +180,14 @@ const FoodPurchases = () => {
               {errorMsg && <p className="text-red-500 ml-3">{errorMsg}</p>}
             </div>
           </div>
+
+          {/* Order Button */}
           <button
             onClick={handleOrder}
             className={`${
               quantity === 0 && "btn-disabled"
-            } btn-warning btn w-full mt-3`}
+            } btn-warning btn w-full mt-4`}
+            disabled={quantity === 0}
           >
             Order Now
           </button>

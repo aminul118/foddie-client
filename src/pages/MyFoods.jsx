@@ -13,7 +13,8 @@ const MyFoods = () => {
     queryKey: ["myFoods", user?.email],
     queryFn: async () => {
       const response = await axios.get(
-        `http://localhost:5000/foods?email=${user?.email}`
+        `http://localhost:5000/foods?email=${user?.email}`,
+        { withCredentials: true }
       );
       return response.data;
     },

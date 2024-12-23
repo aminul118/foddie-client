@@ -17,7 +17,9 @@ const AddFood = () => {
 
     console.log(initialData);
     await axios
-      .post("http://localhost:5000/add-food", initialData)
+      .post("http://localhost:5000/add-food", initialData, {
+        withCredentials: true,
+      })
       .then((res) => {
         console.log(res.data);
         if (res.data.insertedId) {
