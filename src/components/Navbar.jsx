@@ -26,7 +26,7 @@ const Navbar = () => {
   useEffect(() => {
     if (user?.email) {
       axios
-        .get(`http://localhost:5000/users?email=${user.email}`)
+        .get(`${import.meta.env.VITE_BASE_URL}/users?email=${user.email}`)
         .then((res) => {
           // console.log(res.data);
           if (res.data) {

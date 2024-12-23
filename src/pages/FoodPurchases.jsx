@@ -9,11 +9,13 @@ import useAuth from "../hooks/useAuth";
 import { format } from "date-fns";
 import Swal from "sweetalert2";
 import { useState } from "react";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const FoodPurchases = () => {
   const { id } = useParams();
   const { user } = useAuth();
   const navigate = useNavigate();
+  const axiosSecure = useAxiosSecure();
 
   const date = format(new Date(), "dd MMM, yyyy");
   const time = moment().format("LTS");
@@ -25,7 +27,9 @@ const FoodPurchases = () => {
   const { data, isLoading, error } = useQuery({
     queryKey: ["foodData", id],
     queryFn: async () => {
-      const response = await axios.get(`http://localhost:5000/food/${id}`);
+      const response = await axios.get(
+        `${import.meta.env.VITE_BASE_URL}/food/${id}`
+      );
       return response.data;
     },
     enabled: !!id, // Ensures the query only runs if `id` exists
@@ -94,8 +98,8 @@ const FoodPurchases = () => {
       });
     }
 
-    axios
-      .post("http://localhost:5000/order", newOrder, {
+    axiosSecure
+      .post("/order", newOrder, {
         withCredentials: true,
       })
       .then((res) => {

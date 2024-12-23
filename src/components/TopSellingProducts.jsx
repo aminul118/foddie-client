@@ -8,7 +8,9 @@ const TopSellingProducts = () => {
   const { data, isLoading } = useQuery({
     queryKey: ["top Selling products"],
     queryFn: async () => {
-      const response = await axios.get("http://localhost:5000/topSelling");
+      const response = await axios.get(
+        `${import.meta.env.VITE_BASE_URL}/topSelling`
+      );
       return response.data;
     },
   });

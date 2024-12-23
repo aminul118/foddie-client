@@ -22,11 +22,11 @@ const Login = () => {
 
     const pass = form.password.value;
 
-    console.log({ email, pass });
+    // console.log({ email, pass });
 
     try {
       const result = await login(email, pass);
-      console.log(result);
+      // console.log(result);
 
       {
         location.state ? navigate(location.state) : navigate("/");

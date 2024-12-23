@@ -41,7 +41,7 @@ const UpdateFood = () => {
 
     try {
       const res = await axios.put(
-        `http://localhost:5000/food/${_id}`,
+        `${import.meta.env.VITE_BASE_URL}/food/${_id}`,
         initialData
       );
       console.log(res.data);

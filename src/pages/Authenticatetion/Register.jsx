@@ -79,17 +79,19 @@ const Register = () => {
       setUser({ ...user, displayName: name, photoURL: photo });
 
       // Send the new user's info to your backend API
-      await axios.post("http://localhost:5000/users", newUser).then((res) => {
-        console.log(res.data);
-        if (res.data?.insertedId) {
-          Swal.fire({
-            title: "Good job!",
-            text: "Registration Successful!",
-            icon: "success",
-          });
-        }
-        navigate("/login");
-      });
+      await axios
+        .post(`${import.meta.env.VITE_BASE_URL}/users`, newUser)
+        .then((res) => {
+          console.log(res.data);
+          if (res.data?.insertedId) {
+            Swal.fire({
+              title: "Good job!",
+              text: "Registration Successful!",
+              icon: "success",
+            });
+          }
+          navigate("/login");
+        });
     } catch (err) {
       console.log("ERROR:", err);
       Swal.fire({

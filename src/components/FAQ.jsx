@@ -14,7 +14,11 @@ const FAQ = () => {
           <Accordion />
         </div>
         <div>
-          <Lottie loop={1} className="md:w-[500px] mx-auto" animationData={img} />
+          <Lottie
+            loop={1}
+            className="md:w-[500px] mx-auto"
+            animationData={img}
+          />
         </div>
       </div>
     </section>

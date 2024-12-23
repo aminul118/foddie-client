@@ -12,9 +12,12 @@ const AllFoods = () => {
   const { data, isLoading, error } = useQuery({
     queryKey: ["allfoods", search], // Dynamic query key includes filter and search
     queryFn: async () => {
-      const response = await axios.get(`http://localhost:5000/all-foods`, {
-        params: { search }, // Use axios params for cleaner query string handling
-      });
+      const response = await axios.get(
+        `${import.meta.env.VITE_BASE_URL}/all-foods`,
+        {
+          params: { search }, // Use axios params for cleaner query string handling
+        }
+      );
       return response.data;
     },
     enabled: true, // Always fetch when the component mounts

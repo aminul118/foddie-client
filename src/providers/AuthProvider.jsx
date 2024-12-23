@@ -56,7 +56,7 @@ const AuthProvider = ({ children }) => {
         if (currentUser?.email) {
           const user = currentUser.email;
           axios
-            .post("http://localhost:5000/jwt", user, {
+            .post(`${import.meta.env.VITE_BASE_URL}/jwt`, user, {
               withCredentials: true,
             })
             .then((res) => {
@@ -69,8 +69,14 @@ const AuthProvider = ({ children }) => {
         }
       } else {
         axios
-          .post("http://localhost:5000/logout", {}, { withCredentials: true })
-          .then((res) => console.log("Log out", res.data));
+          .post(
+            `${import.meta.env.VITE_BASE_URL}/logout`,
+            {},
+            { withCredentials: true }
+          )
+          .then((res) => {
+            console.log("Log out", res.data);
+          });
         // console.log("User signed out");
         setUser(null);
         setLoading(false);
