@@ -37,9 +37,16 @@ const MyFoods = () => {
         image="https://i.ibb.co.com/qJw15rr/Brown-black-Modern-Korean-Food-Banner.png"
         Heading="My Foods"
       />
-      <h1 className="text-center text-5xl font-bold py-8">
-        You added {data?.length} Foods
-      </h1>
+
+      {data.length === 0 ? (
+        <h1 className=" text-5xl font-bold py-8 min-h-[calc(100vh-560px)] flex justify-center items-center">
+          You are not added any food yet
+        </h1>
+      ) : (
+        <h1 className=" text-5xl font-bold py-8  text-center">
+          You added {data?.length} Foods
+        </h1>
+      )}
 
       {/* Food Table */}
       {data.length > 0 ? (

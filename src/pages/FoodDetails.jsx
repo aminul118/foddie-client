@@ -33,7 +33,7 @@ const FoodDetails = () => {
         </figure>
         <div className=" mt-3">
           <div className="flex gap-2 flex-wrap mt-2">
-            {ingredients.map((ingredient, i) => (
+            {ingredients?.map((ingredient, i) => (
               <div
                 key={i}
                 className="badge badge-outline hover:cursor-pointer hover:bg-blue-500 hover:text-base-100"

@@ -9,13 +9,11 @@ import useAuth from "../hooks/useAuth";
 import { format } from "date-fns";
 import Swal from "sweetalert2";
 import { useState } from "react";
-import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const FoodPurchases = () => {
   const { id } = useParams();
   const { user } = useAuth();
   const navigate = useNavigate();
-  const axiosSecure = useAxiosSecure();
 
   const date = format(new Date(), "dd MMM, yyyy");
   const time = moment().format("LTS");
@@ -98,8 +96,8 @@ const FoodPurchases = () => {
       });
     }
 
-    axiosSecure
-      .post("/order", newOrder, {
+    axios
+      .post(`${import.meta.env.VITE_BASE_URL}/order`, newOrder, {
         withCredentials: true,
       })
       .then((res) => {
@@ -117,9 +115,10 @@ const FoodPurchases = () => {
       .catch((err) => {
         Swal.fire({
           title: "Error",
-          text: err.response?.data?.message || "Failed to place order.",
+          text: err.response?.data || "Failed to place order.",
           icon: "error",
         });
+        // console.log("ERROR:", err);
       });
   };
 
@@ -193,7 +192,7 @@ const FoodPurchases = () => {
             } btn-warning btn w-full mt-4`}
             disabled={quantity === 0}
           >
-            Order Now
+            Confirm Order
           </button>
         </div>
       </div>
