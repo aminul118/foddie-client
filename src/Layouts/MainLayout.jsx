@@ -4,8 +4,10 @@ import Footer from "../components/Footer";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
+import useTheme from "../hooks/useTheme";
 
 const MainLayout = () => {
+  const { darkMode } = useTheme();
   useEffect(() => {
     AOS.init({
       duration: 500,
@@ -17,7 +19,10 @@ const MainLayout = () => {
   }, []);
 
   return (
-    <div>
+    <div
+      data-theme={darkMode ? "dark" : "light"}
+      className={`${darkMode ? "text-white " : "text-black/75"}`}
+    >
       <Navbar />
       <div className="min-h-[calc(100vh-304px)] container mx-auto">
         <Outlet />

@@ -8,7 +8,7 @@ import icon5 from "../../src/assets/icons/5.png";
 import icon6 from "../../src/assets/icons/6.png";
 import CategoryCard from "./CategoryCard";
 
-const SpecialOffer = () => {
+const WhyFoddie = () => {
   return (
     <div>
       <ParallaxProvider>
@@ -46,4 +46,4 @@ const SpecialOffer = () => {
   );
 };
 
-export default SpecialOffer;
+export default WhyFoddie;

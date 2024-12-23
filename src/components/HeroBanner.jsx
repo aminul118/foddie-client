@@ -24,10 +24,10 @@ const HeroBanner = () => {
           clickable: true,
         }}
         modules={[Autoplay, Pagination, Navigation]}
-        className="mySwiper rounded-lg"
+        className="mySwiper rounded-lg w-full h-[500px] md:h-[600px]"
       >
         {/* Slide 1 */}
-        <SwiperSlide className="relative w-full  ">
+        <SwiperSlide className="relative w-full ">
           <img
             src={img1}
             alt="Banner 1"

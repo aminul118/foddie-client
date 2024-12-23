@@ -5,10 +5,13 @@ import logo from "/foddie.svg";
 import { toast } from "react-toastify";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { MdDarkMode, MdLightMode } from "react-icons/md";
+import useTheme from "../hooks/useTheme";
 
 const Navbar = () => {
   const { user, logOut, loading } = useAuth();
   const [userInfo, setUserInfo] = useState({});
+  const { darkMode, handleDarkModeToggle } = useTheme();
 
   const navigate = useNavigate();
 
@@ -117,6 +120,11 @@ const Navbar = () => {
 
         {/* Navbar End */}
         <div className="navbar-end">
+          <div className="text-2xl mr-3">
+            <button onClick={handleDarkModeToggle}>
+              {darkMode ? <MdLightMode /> : <MdDarkMode />}
+            </button>
+          </div>
           {/* Show Loading State */}
           {loading ? (
             <span className="loading loading-ring loading-lg"></span>
