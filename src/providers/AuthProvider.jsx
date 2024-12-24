@@ -53,19 +53,23 @@ const AuthProvider = ({ children }) => {
         // console.log("Current User:", currentUser);
         setUser(currentUser);
 
-        if (currentUser?.email) {
+        if (currentUser) {
           const user = currentUser.email;
           axios
-            .post(`${import.meta.env.VITE_BASE_URL}/jwt`, user, {
-              withCredentials: true,
-            })
+            .post(
+              `${import.meta.env.VITE_BASE_URL}/jwt`,
+              { email: user },
+              {
+                withCredentials: true,
+              }
+            )
             .then((res) => {
-              // console.log("JWT token:", res.data);
+              console.log("JWT token:", res.data);
+              setLoading(false);
             })
             .catch((err) => {
               // console.log("JWT ERROR:", err);
             });
-          setLoading(false);
         }
       } else {
         axios
