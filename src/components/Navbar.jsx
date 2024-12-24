@@ -34,7 +34,7 @@ const Navbar = () => {
           }
         })
         .catch((error) => {
-          console.error("Error fetching user data:", error);
+          // console.error("Error fetching user data:", error);
         });
     }
   }, [user?.email]); // Only re-run if user email changes
