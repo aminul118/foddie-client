@@ -150,5 +150,197 @@
       "userName": "MD AMINUL ISLAM",
       "email": "mr.aminul118@gmail.com"
     }
+  },
+  {
+    "food_name": "Almond Croissant",
+    "food_image": "https://i.ibb.co.com/h1p9gvx/Croissants-20-500x500.webp",
+    "food_category": "French",
+    "quantity": 11,
+    "price": 4.5,
+    "origin": "France",
+    "ingredients": ["Flour", "Butter", "Yeast", "Sugar", "Milk"],
+    "purchased_count": 0,
+    "addedBy": {
+      "userName": "MD AMINUL ISLAM",
+      "email": "mr.aminul118@gmail.com"
+    }
+  },
+  {
+    "food_name": "Salmon Nigiri",
+    "food_image": "https://i.ibb.co.com/fCLyXFf/how-to-make-sushi-salmon-nigiri-6.jpg",
+    "food_category": "Japanese",
+    "quantity": 20,
+    "price": 12.5,
+    "origin": "Japan",
+    "ingredients": ["Rice", "Fish", "Seaweed", "Soy Sauce", "Wasabi"],
+    "purchased_count": 5,
+    "addedBy": {
+      "userName": "SAKURA TANAKA",
+      "email": "sakura.tanaka@example.com"
+    }
+  },
+  {
+    "food_name": "Truffle Pizza",
+    "food_image": "https://i.ibb.co.com/ww6h8DH/download.jpg",
+    "food_category": "Italian",
+    "quantity": 15,
+    "price": 9.0,
+    "origin": "Italy",
+    "ingredients": [
+      "Flour",
+      "Tomato Sauce",
+      "Mozzarella",
+      "Basil",
+      "Olive Oil"
+    ],
+    "purchased_count": 3,
+    "addedBy": {
+      "userName": "LUCA ROSSI",
+      "email": "luca.rossi@example.com"
+    }
+  },
+  {
+    "food_name": "Beef Bourguignon",
+    "food_image": "https://i.ibb.co.com/GkJ23f3/download.jpg",
+    "food_category": "French",
+    "quantity": 8,
+    "price": 18.0,
+    "origin": "France",
+    "ingredients": ["Beef", "Red Wine", "Onion", "Garlic", "Carrot"],
+    "purchased_count": 2,
+    "addedBy": {
+      "userName": "JEAN DUPONT",
+      "email": "jean.dupont@example.com"
+    }
+  },
+  {
+    "food_name": "Ramen Tonkotsu",
+    "food_image": "https://i.ibb.co.com/G9bztBq/k-Photo-Recipes-2024-03-tonkotsu-ramen-tonkotsu-ramen-195.jpg",
+    "food_category": "Japanese",
+    "quantity": 25,
+    "price": 11.5,
+    "origin": "Japan",
+    "ingredients": [
+      "Pork Broth",
+      "Noodles",
+      "Egg",
+      "Scallions",
+      "Bamboo Shoots"
+    ],
+    "purchased_count": 7,
+    "addedBy": {
+      "userName": "KAZUO YAMADA",
+      "email": "kazuo.yamada@example.com"
+    }
+  },
+  {
+    "food_name": "Caprese Salad",
+    "food_image": "https://i.ibb.co.com/LN2tPPq/download.jpg",
+    "food_category": "Italian",
+    "quantity": 18,
+    "price": 7.0,
+    "origin": "Italy",
+    "ingredients": [
+      "Tomato",
+      "Mozzarella",
+      "Basil",
+      "Olive Oil",
+      "Balsamic Glaze"
+    ],
+    "purchased_count": 4,
+    "addedBy": {
+      "userName": "SOFIA BIANCHI",
+      "email": "sofia.bianchi@example.com"
+    }
+  },
+  {
+    "food_name": "Escargots",
+    "food_image": "https://i.ibb.co.com/88YskvQ/download.jpg",
+    "food_category": "French",
+    "quantity": 12,
+    "price": 15.0,
+    "origin": "France",
+    "ingredients": ["Snails", "Butter", "Garlic", "Parsley", "Salt"],
+    "purchased_count": 1,
+    "addedBy": {
+      "userName": "MARIE CLAUDETTE",
+      "email": "marie.claudette@example.com"
+    }
+  },
+  {
+    "food_name": "Dragon Roll",
+    "food_image": "https://i.ibb.co.com/zs7cJDT/download.jpg",
+    "food_category": "Japanese",
+    "quantity": 22,
+    "price": 14.0,
+    "origin": "Japan",
+    "ingredients": [
+      "Rice",
+      "Shrimp Tempura",
+      "Avocado",
+      "Cucumber",
+      "Eel Sauce"
+    ],
+    "purchased_count": 6,
+    "addedBy": {
+      "userName": "YUKI HONDA",
+      "email": "yuki.honda@example.com"
+    }
+  },
+  {
+    "food_name": "Risotto al Funghi",
+    "food_image": "https://i.ibb.co.com/xFrMbkf/download.jpg",
+    "food_category": "Italian",
+    "quantity": 10,
+    "price": 13.0,
+    "origin": "Italy",
+    "ingredients": ["Rice", "Mushrooms", "Parmesan", "Onion", "Garlic"],
+    "purchased_count": 3,
+    "addedBy": {
+      "userName": "ENRICO MARTINI",
+      "email": "enrico.martini@example.com"
+    }
+  },
+  {
+    "food_name": "Coq au Vin",
+    "food_image": "https://i.ibb.co.com/4VJQdJC/download.jpg",
+    "food_category": "French",
+    "quantity": 9,
+    "price": 16.0,
+    "origin": "France",
+    "ingredients": ["Chicken", "Red Wine", "Mushrooms", "Onions", "Garlic"],
+    "purchased_count": 2,
+    "addedBy": {
+      "userName": "PIERRE MARTIN",
+      "email": "pierre.martin@example.com"
+    }
+  },
+  {
+    "food_name": "Miso Soup",
+    "food_image": "https://i.ibb.co.com/DGSkJ3p/download.jpg",
+    "food_category": "Japanese",
+    "quantity": 30,
+    "price": 5.0,
+    "origin": "Japan",
+    "ingredients": ["Miso Paste", "Tofu", "Seaweed", "Scallions", "Dashi"],
+    "purchased_count": 8,
+    "addedBy": {
+      "userName": "AKIRA FUJIMOTO",
+      "email": "akira.fujimoto@example.com"
+    }
+  },
+  {
+    "food_name": "Panna Cotta",
+    "food_image": "https://i.ibb.co.com/60QX5y8/download.jpg",
+    "food_category": "Italian",
+    "quantity": 14,
+    "price": 6.5,
+    "origin": "Italy",
+    "ingredients": ["Cream", "Sugar", "Gelatin", "Vanilla", "Berry Sauce"],
+    "purchased_count": 3,
+    "addedBy": {
+      "userName": "GIULIA FERRO",
+      "email": "giulia.ferro@example.com"
+    }
   }
 ]
