@@ -4,7 +4,7 @@ A full-stack **Restaurant Management Website** built using the **MERN Stack (Mon
 
 ## 🚀 Live Demo
 
-[Live Site URL](#)
+[Live Site URL](https://foddie-resturant.netlify.app)
 
 ## 📚 Table of Contents
 
