@@ -1,20 +1,42 @@
-# Foddie
+# 🍽️ Restaurant Management Website name Foddie
 
-# 🚀 Client Project
+A full-stack **Restaurant Management Website** built using the **MERN Stack (MongoDB, Express.js, React.js, Node.js)** to streamline restaurant operations, enhance customer interaction, and provide a seamless user experience.
 
-A modern web application built with React, Vite, and Tailwind CSS, designed for optimal performance and developer experience.
+## 🚀 Live Demo
+
+[Live Site URL](#)
 
 ## 📚 Table of Contents
 
-- [About the Project](#about-the-project)
-- [Tech Stack](#tech-stack)
-- [Installation](#installation)
-- [Available Scripts](#available-scripts)
-- [Folder Structure](#folder-structure)
+- [Foddie](#foddie)
+- [About the Project](#-about-the-project)
+- [Tech Stack](#-tech-stack)
+- [Installation](#-installation)
+- [Available Scripts](#-available-scripts)
+- [Folder Structure](#-folder-structure)
 
 ## 📝 About the Project
 
-This project leverages modern web technologies to deliver a smooth and fast user experience. It includes support for animations, API handling, state management, and optimized asset delivery.
+This Restaurant Management Website allows restaurant owners to manage their menu, streamline food ordering processes, and enhance customer satisfaction through efficient backend and interactive frontend technologies.
+
+Key aspects of the project include:
+
+- **Responsive Design:** Fully responsive on mobile, tablet, and desktop devices.
+- **Secure Authentication:** Firebase authentication and JWT token-based authorization.
+- **Interactive UI:** User-friendly interfaces with seamless navigation.
+- **Data Security:** Secure Firebase and MongoDB credentials with environment variables.
+
+## 🌟 Key Features
+
+1. **Dynamic Navigation:** Navbar with conditional login/logout functionality.
+2. **Authentication:** Email-password and Google login.
+3. **Food Management:** Add, edit, and delete food items.
+4. **Order Management:** Manage user-specific orders with timestamps.
+5. **Search and Filter:** Advanced search functionality on the All Foods page.
+6. **Theme Toggle:** Switch between light and dark themes.
+7. **Pagination:** Backend-driven pagination for better performance.
+8. **Gallery Section:** Interactive image gallery with lightbox support.
+9. **Error Handling:** Proper alerts and error messages.
 
 ## 🛠️ Tech Stack
 
@@ -65,7 +87,7 @@ This project leverages modern web technologies to deliver a smooth and fast user
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/aminul118/client.git
+   https://github.com/programming-hero-web-course2/b10a11-client-side-aminul118.git
    ```
 2. **Navigate to the project folder:**
    ```bash
