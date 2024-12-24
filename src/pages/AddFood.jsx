@@ -1,4 +1,3 @@
-import axios from "axios";
 import useAuth from "../hooks/useAuth";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../hooks/useAxiosSecure";
@@ -6,6 +5,7 @@ import useAxiosSecure from "../hooks/useAxiosSecure";
 const AddFood = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
+
   const handleAddFood = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
@@ -18,121 +18,124 @@ const AddFood = () => {
     initialData.purchased_count = 0;
 
     console.log(initialData);
-    await axiosSecure.post("/add-food", initialData).then((res) => {
-      // console.log(res.data);
+    try {
+      const res = await axiosSecure.post("/add-food", initialData);
       if (res.data.insertedId) {
         Swal.fire({
-          title: "Good job!",
-          text: "Product added successfully!",
+          title: "Success!",
+          text: "Food added successfully!",
           icon: "success",
         });
+        e.target.reset();
       }
-    });
+    } catch (error) {
+      Swal.fire({
+        title: "Error!",
+        text: "Failed to add food. Please try again.",
+        icon: "error",
+      });
+      console.error(error);
+    }
   };
+
   return (
-    <div>
-      <h1 className="text-5xl font-bold py-6 text-center">Add Food</h1>
+    <div className="max-w-4xl mx-auto px-4 py-8 ">
+      <h1 className="text-4xl md:text-5xl font-bold text-center mb-6">
+        Add Food
+      </h1>
       <form
         onSubmit={handleAddFood}
-        className="card-body   rounded-lg grid lg:grid-cols-2 gap-4"
-        data-aos="fade-left"
+        className="rounded-lg  grid grid-cols-1 md:grid-cols-2 gap-6 "
       >
-        {/* Name of the food */}
-        <div className="form-control">
-          <label htmlFor="name" className="label">
-            <span className="label-text">Name</span>
-          </label>
+        {/* Food Name */}
+        <div>
+          <label className="block text-gray-700 font-medium mb-1">Name</label>
           <input
             type="text"
             name="food_name"
             placeholder="Enter Food Name"
-            className="px-4 py-3 border focus:outline-none focus:ring-1 ring-blue-400 rounded-lg"
+            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             required
           />
         </div>
+
         {/* Image URL */}
-        <div className="form-control">
-          <label htmlFor="name" className="label">
-            <span className="label-text">Image URL</span>
-          </label>
+        <div>
+          <label className="block  font-medium mb-1 ">Image URL</label>
           <input
             type="url"
             name="food_image"
-            placeholder="Image URL"
-            className="px-4 py-3 border focus:outline-none focus:ring-1 ring-blue-400 rounded-lg"
+            placeholder="Enter Image URL"
+            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             required
           />
         </div>
+
         {/* Food Category */}
-        <div className="form-control">
-          <label htmlFor="name" className="label">
-            <span className="label-text">Food Category</span>
-          </label>
+        <div>
+          <label className="block  font-medium mb-1">Food Category</label>
           <input
             type="text"
             name="food_category"
-            placeholder="Food Category"
-            className="px-4 py-3 border focus:outline-none focus:ring-1 ring-blue-400 rounded-lg"
+            placeholder="Enter Food Category"
+            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             required
           />
         </div>
-        {/* Food Quantity */}
-        <div className="form-control">
-          <label htmlFor="name" className="label">
-            <span className="label-text">Quantity</span>
-          </label>
+
+        {/* Quantity */}
+        <div>
+          <label className="block  font-medium mb-1">Quantity</label>
           <input
-            type="text"
+            type="number"
             name="quantity"
-            placeholder="Quantity"
-            className="px-4 py-3 border focus:outline-none focus:ring-1 ring-blue-400 rounded-lg"
+            placeholder="Enter Quantity"
+            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             required
           />
         </div>
+
         {/* Price */}
-        <div className="form-control">
-          <label htmlFor="name" className="label">
-            <span className="label-text">Price</span>
-          </label>
+        <div>
+          <label className="block  font-medium mb-1">Price</label>
           <input
-            type="text"
+            type="number"
             name="price"
-            placeholder="Price"
-            className="px-4 py-3 border focus:outline-none focus:ring-1 ring-blue-400 rounded-lg"
+            placeholder="Enter Price"
+            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             required
           />
         </div>
-        {/* Food Origin */}
-        <div className="form-control">
-          <label htmlFor="name" className="label">
-            <span className="label-text">Origin</span>
-          </label>
+
+        {/* Origin */}
+        <div>
+          <label className="block font-medium mb-1">Origin</label>
           <input
             type="text"
             name="origin"
-            placeholder="Origin"
-            className="px-4 py-3 border focus:outline-none focus:ring-1 ring-blue-400 rounded-lg"
+            placeholder="Enter Origin"
+            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             required
           />
         </div>
+
         {/* Ingredients */}
-        <div className="form-control col-span-2">
-          <label htmlFor="name" className="label">
-            <span className="label-text">Ingredients</span>
-          </label>
+        <div className="md:col-span-2">
+          <label className="block font-medium mb-1">Ingredients</label>
           <textarea
-            type="text"
             name="ingredients"
-            placeholder="Ingredients"
-            className="px-4 py-3 border focus:outline-none focus:ring-1 ring-blue-400 rounded-lg resize-none h-48"
+            placeholder="Enter Ingredients (one per line)"
+            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none h-32"
             required
-          />
+          ></textarea>
         </div>
-        <input
-          className="btn col-span-2 btn-warning"
-          type="submit"
-          value="Add Item"
-        />
+
+        {/* Submit Button */}
+        <div className="md:col-span-2 flex justify-center">
+          <button type="submit" className="w-full btn btn-warning">
+            Add Item
+          </button>
+        </div>
       </form>
     </div>
   );

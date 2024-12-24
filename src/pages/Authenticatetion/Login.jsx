@@ -39,11 +39,11 @@ const Login = () => {
   };
 
   return (
-    <div className="grid grid-cols-2 items-center container mx-auto min-h-[calc(100vh-304px)]">
+    <div className="grid lg:grid-cols-2 items-center container mx-auto min-h-[calc(100vh-304px)]">
       <AuthenticationLottie />
       <form
         onSubmit={handleLogin}
-        className="card-body max-w-2xl  rounded-lg shadow-lg"
+        className="card-body max-w-2xl  rounded-lg lg:shadow-lg"
         data-aos="fade-right"
       >
         <h1 className="text-5xl font-bold py-6">Login</h1>
