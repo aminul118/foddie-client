@@ -26,7 +26,7 @@ const Profile = () => {
     return <div>Error: {error.message}</div>;
   }
 
-  console.log(data);
+  // console.log(data);
   const { name, email, photo } = data;
 
   return (

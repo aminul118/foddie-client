@@ -4,14 +4,15 @@ import useAuth from "../hooks/useAuth";
 import logo from "/foddie.svg";
 import { toast } from "react-toastify";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { MdDarkMode, MdLightMode } from "react-icons/md";
 import useTheme from "../hooks/useTheme";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const Navbar = () => {
   const { user, logOut, loading } = useAuth();
   const [userInfo, setUserInfo] = useState({});
   const { darkMode, handleDarkModeToggle } = useTheme();
+  const axiosSecure = useAxiosSecure();
 
   const navigate = useNavigate();
 
@@ -25,7 +26,7 @@ const Navbar = () => {
   // Fetch User Info
   useEffect(() => {
     if (user?.email) {
-      axios
+      axiosSecure
         .get(`${import.meta.env.VITE_BASE_URL}/users?email=${user.email}`)
         .then((res) => {
           // console.log(res.data);
