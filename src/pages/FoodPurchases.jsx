@@ -9,6 +9,7 @@ import useAuth from "../hooks/useAuth";
 import { format } from "date-fns";
 import Swal from "sweetalert2";
 import { useState } from "react";
+import { Helmet } from "react-helmet";
 
 const FoodPurchases = () => {
   const { id } = useParams();
@@ -124,7 +125,10 @@ const FoodPurchases = () => {
 
   /** 📦 JSX UI **/
   return (
-    <div className="min-h-[calc(100vh-304px)] flex items-center">
+    <section className="min-h-[calc(100vh-304px)] flex items-center">
+      <Helmet>
+        <title>Food Purchases || Foddie</title>
+      </Helmet>
       <div className="card bg-base-100 max-w-2xl mx-auto border p-8 rounded-lg shadow-md">
         {/* Food Image */}
         <figure>
@@ -196,7 +200,7 @@ const FoodPurchases = () => {
           </button>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -69,13 +69,15 @@ Key aspects of the project include:
 
 ### Utilities
 
-- **Axios**: Promise-based HTTP client
+- **Axios**: Promise-based HTTP client and also interceptor
+- **TanStack Query**: manage server-side data fetching, caching, synchronization, and updating with simplicity and efficiency.
 - **Moment.js**: Date and time utilities
 - **Date-fns**: Modern date library
 - **EmailJS**: Email API integration
 - **LocalForage**: Client-side storage
 - **SweetAlert2**: Beautiful alerts
 - **React Photo Album**: Grid image with Showing full details
+- **React Helmet**: Dynamic Tittle on the browser tab
 
 ### Development Tools
 

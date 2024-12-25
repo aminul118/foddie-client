@@ -1,6 +1,7 @@
 import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
 import Swal from "sweetalert2";
 import emailjs from "emailjs-com";
+import { Helmet } from "react-helmet";
 
 const ContactUs = () => {
   const handleContact = (e) => {
@@ -45,6 +46,9 @@ const ContactUs = () => {
 
   return (
     <section className="w-full min-h-[calc(100vh-304px)] flex items-center justify-center ">
+      <Helmet>
+        <title>Contact || Foddie</title>
+      </Helmet>
       <div className="w-full max-w-6xl rounded-xl p-6 lg:p-10  ">
         <div className="flex flex-col lg:flex-row gap-10 items-start justify-between">
           {/* Left Side: Contact Form */}

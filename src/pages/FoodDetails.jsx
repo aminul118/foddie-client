@@ -2,6 +2,7 @@ import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import coins from "../../src/assets/icons/coins.png";
 import dollar from "../../src/assets/icons/dollar.png";
 import { CiForkAndKnife } from "react-icons/ci";
+import { Helmet } from "react-helmet";
 
 const FoodDetails = () => {
   const food = useLoaderData();
@@ -23,6 +24,9 @@ const FoodDetails = () => {
 
   return (
     <div className="min-h-[calc(100vh-304px)] flex items-center">
+      <Helmet>
+        <title>Food Details || Foddie</title>
+      </Helmet>
       <div className="card bg-base-100 max-w-2xl mx-auto border p-8 ">
         <figure>
           <img

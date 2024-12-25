@@ -1,10 +1,10 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import useAuth from "../hooks/useAuth";
-import axios from "axios";
 import Loading from "../components/Loading";
 import { MdDeleteForever } from "react-icons/md";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import { Helmet } from "react-helmet";
 
 const MyOrders = () => {
   const { user } = useAuth();
@@ -84,7 +84,10 @@ const MyOrders = () => {
 
   /** 📦 Render Orders */
   return (
-    <div className="overflow-x-auto p-4">
+    <section className="overflow-x-auto p-4">
+      <Helmet>
+        <title>My Orders || Foddie</title>
+      </Helmet>
       <h2 className="text-2xl font-bold mb-4 text-center">My Orders</h2>
       {orders?.length === 0 ? (
         <p className="text-center text-gray-500">No orders found.</p>
@@ -163,7 +166,7 @@ const MyOrders = () => {
           </tbody>
         </table>
       )}
-    </div>
+    </section>
   );
 };
 

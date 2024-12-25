@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import useAuth from "../hooks/useAuth";
 import Loading from "../components/Loading";
+import { Helmet } from "react-helmet";
 
 const Profile = () => {
   const { user, logOut } = useAuth();
@@ -30,7 +31,10 @@ const Profile = () => {
   const { name, email, photo } = data;
 
   return (
-    <div className="min-h-[calc(100vh-304px)] flex items-center">
+    <section className="min-h-[calc(100vh-304px)] flex items-center">
+      <Helmet>
+        <title>Profile || Foddie</title>
+      </Helmet>
       <div className="max-w-sm w-full mx-auto mt-10 p-6 bg-white rounded-lg shadow-md border border-gray-200 text-center">
         <h1 className="text-2xl font-bold text-gray-800 mb-4">Profile</h1>
         <img
@@ -49,7 +53,7 @@ const Profile = () => {
           </button>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

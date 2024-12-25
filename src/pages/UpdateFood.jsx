@@ -2,6 +2,7 @@ import axios from "axios";
 import useAuth from "../hooks/useAuth";
 import Swal from "sweetalert2";
 import { useLoaderData } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const UpdateFood = () => {
   const { user } = useAuth();
@@ -61,7 +62,10 @@ const UpdateFood = () => {
     }
   };
   return (
-    <div>
+    <section>
+      <Helmet>
+        <title>Update food || Foddie</title>
+      </Helmet>
       <h1 className="text-5xl font-bold py-6 text-center">Update Food</h1>
       <form
         onSubmit={handleAddFood}
@@ -172,7 +176,7 @@ const UpdateFood = () => {
           value="Update Item"
         />
       </form>
-    </div>
+    </section>
   );
 };
 

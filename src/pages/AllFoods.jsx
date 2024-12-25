@@ -4,6 +4,7 @@ import Loading from "../components/Loading";
 import FoodCard from "../components/FoodCard";
 import SectionBanner from "../components/SectionBanner";
 import { useState } from "react";
+import { Helmet } from "react-helmet";
 
 const AllFoods = () => {
   const [search, setSearch] = useState("");
@@ -47,6 +48,9 @@ const AllFoods = () => {
 
   return (
     <section>
+      <Helmet>
+        <title>All foods || Foddie</title>
+      </Helmet>
       {/* All Foods Banner */}
       <div className="mb-12">
         <SectionBanner

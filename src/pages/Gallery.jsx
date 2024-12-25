@@ -4,6 +4,7 @@ import "yet-another-react-lightbox/styles.css";
 import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
 import { RowsPhotoAlbum } from "react-photo-album";
 import SectionBanner from "../components/SectionBanner";
+import { Helmet } from "react-helmet";
 
 const Gallery = () => {
   const [index, setIndex] = useState(-1);
@@ -155,9 +156,11 @@ const Gallery = () => {
     },
   ];
 
-
   return (
-    <div className="gallery-container mb-14">
+    <section className="gallery-container mb-14">
+      <Helmet>
+        <title>Gallery || Foddie</title>
+      </Helmet>
       <div className="mb-12">
         <SectionBanner
           image="https://i.ibb.co.com/8Ns5F6B/Menu2.png"
@@ -207,7 +210,7 @@ const Gallery = () => {
         close={() => setIndex(-1)}
         plugins={[Fullscreen]}
       />
-    </div>
+    </section>
   );
 };
 

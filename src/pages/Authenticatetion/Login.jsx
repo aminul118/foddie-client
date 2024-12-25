@@ -5,6 +5,7 @@ import { FiEye, FiEyeOff } from "react-icons/fi";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import AuthenticationLottie from "../../components/AuthenticationLottie";
 import { toast } from "react-toastify";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
   const { login } = useAuth();
@@ -39,7 +40,10 @@ const Login = () => {
   };
 
   return (
-    <div className="grid lg:grid-cols-2 items-center container mx-auto min-h-[calc(100vh-304px)]">
+    <section className="grid lg:grid-cols-2 items-center container mx-auto min-h-[calc(100vh-304px)]">
+      <Helmet>
+        <title>Login || Foddie</title>
+      </Helmet>
       <AuthenticationLottie />
       <form
         onSubmit={handleLogin}
@@ -102,7 +106,7 @@ const Login = () => {
           </Link>
         </p>
       </form>
-    </div>
+    </section>
   );
 };
 

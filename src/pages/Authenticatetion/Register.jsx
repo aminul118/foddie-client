@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import AuthenticationLottie from "../../components/AuthenticationLottie";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const Register = () => {
   const { createUser, setUser, updateUserProfile } = useAuth();
@@ -103,7 +104,10 @@ const Register = () => {
   };
 
   return (
-    <div className="grid lg:grid-cols-2 items-center container mx-auto min-h-[calc(100vh-304px)]">
+    <section className="grid lg:grid-cols-2 items-center container mx-auto min-h-[calc(100vh-304px)]">
+      <Helmet>
+        <title>Register || Foddie</title>
+      </Helmet>
       <AuthenticationLottie />
       <form
         onSubmit={handleRegister}
@@ -203,7 +207,7 @@ const Register = () => {
           </Link>
         </p>
       </form>
-    </div>
+    </section>
   );
 };
 

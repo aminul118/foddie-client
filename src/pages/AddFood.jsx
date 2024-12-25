@@ -1,6 +1,7 @@
 import useAuth from "../hooks/useAuth";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import { Helmet } from "react-helmet";
 
 const AddFood = () => {
   const { user } = useAuth();
@@ -40,6 +41,9 @@ const AddFood = () => {
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8 ">
+      <Helmet>
+        <title>Add Food || Foddie</title>
+      </Helmet>
       <h1 className="text-4xl md:text-5xl font-bold text-center mb-6">
         Add Food
       </h1>
