@@ -4,7 +4,7 @@ import "yet-another-react-lightbox/styles.css";
 import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
 import { RowsPhotoAlbum } from "react-photo-album";
 import SectionBanner from "../components/SectionBanner";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 const Gallery = () => {
   const [index, setIndex] = useState(-1);

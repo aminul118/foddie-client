@@ -9,7 +9,7 @@ import useAxiosSecure from "../hooks/useAxiosSecure";
 import { MdDelete } from "react-icons/md";
 import Swal from "sweetalert2";
 import { useState } from "react";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 const MyFoods = () => {
   const { user } = useAuth();

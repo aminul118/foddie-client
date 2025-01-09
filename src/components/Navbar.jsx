@@ -3,16 +3,14 @@ import { GoSignOut } from "react-icons/go";
 import useAuth from "../hooks/useAuth";
 import logo from "/foddie.svg";
 import { toast } from "react-toastify";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { MdDarkMode, MdLightMode } from "react-icons/md";
 import useTheme from "../hooks/useTheme";
-import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const Navbar = () => {
   const { user, logOut, loading } = useAuth();
   const [userInfo, setUserInfo] = useState({});
   const { darkMode, handleDarkModeToggle } = useTheme();
-  const axiosSecure = useAxiosSecure();
 
   const navigate = useNavigate();
 
@@ -22,23 +20,6 @@ const Navbar = () => {
     toast.success("Sign Out successfully");
     navigate("/login");
   };
-
-  // Fetch User Info
-  useEffect(() => {
-    if (user?.email) {
-      axiosSecure
-        .get(`${import.meta.env.VITE_BASE_URL}/users?email=${user.email}`)
-        .then((res) => {
-          // console.log(res.data);
-          if (res.data) {
-            setUserInfo(res.data);
-          }
-        })
-        .catch((error) => {
-          // console.error("Error fetching user data:", error);
-        });
-    }
-  }, [user?.email]); // Only re-run if user email changes
 
   // Navigation Links
   const navLinks = (
@@ -62,16 +43,7 @@ const Navbar = () => {
   const adminLinks = (
     <>
       <li>
-        <NavLink to="/profile">Profile</NavLink>
-      </li>
-      <li>
-        <NavLink to="/add-food">Add Food</NavLink>
-      </li>
-      <li>
-        <NavLink to="/my-foods">My Foods</NavLink>
-      </li>
-      <li>
-        <NavLink to="/my-orders">My Orders</NavLink>
+        <NavLink to="/dashboard">Dashboard</NavLink>
       </li>
 
       <li>

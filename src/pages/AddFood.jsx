@@ -1,8 +1,8 @@
 import useAuth from "../hooks/useAuth";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../hooks/useAxiosSecure";
-import { Helmet } from "react-helmet";
 
+import { Helmet} from "react-helmet-async";
 const AddFood = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();

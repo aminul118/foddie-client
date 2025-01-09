@@ -2,7 +2,7 @@ import CustomerReview from "../components/CustomerReview";
 import HeroBanner from "../components/HeroBanner";
 import WhyFoddie from "../components/WhyFoddie";
 import TopSellingProducts from "../components/TopSellingProducts";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import NewsLetterForm from "../components/NewsLetterForm";
 import FAQ from "../components/FAQ";
 

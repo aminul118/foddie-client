@@ -2,7 +2,7 @@ import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import coins from "../../src/assets/icons/coins.png";
 import dollar from "../../src/assets/icons/dollar.png";
 import { CiForkAndKnife } from "react-icons/ci";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 const FoodDetails = () => {
   const food = useLoaderData();

@@ -9,7 +9,7 @@ import useAuth from "../hooks/useAuth";
 import { format } from "date-fns";
 import Swal from "sweetalert2";
 import { useState } from "react";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 const FoodPurchases = () => {
   const { id } = useParams();

@@ -4,7 +4,7 @@ import Loading from "../components/Loading";
 import { MdDeleteForever } from "react-icons/md";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../hooks/useAxiosSecure";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 const MyOrders = () => {
   const { user } = useAuth();

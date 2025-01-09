@@ -14,6 +14,8 @@ import MyFoods from "../pages/MyFoods";
 import PrivateRoute from "./PrivateRoute";
 import UpdateFood from "../pages/UpdateFood";
 import ContactUs from "../pages/ContactUs";
+import DashboardLayout from "../Layouts/DashboardLayout";
+import AddedFoods from "../pages/Dashboard/AddedFoods";
 
 const Router = createBrowserRouter([
   {
@@ -36,14 +38,7 @@ const Router = createBrowserRouter([
         path: "contact",
         element: <ContactUs />,
       },
-      {
-        path: "add-food",
-        element: (
-          <PrivateRoute>
-            <AddFood />
-          </PrivateRoute>
-        ),
-      },
+
       {
         path: "food-details/:id",
         element: <FoodDetails />,
@@ -66,11 +61,27 @@ const Router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+
       {
-        path: "my-foods",
+        path: "login",
+        element: <Login />,
+      },
+      {
+        path: "register",
+        element: <Register />,
+      },
+    ],
+  },
+  {
+    path: "/dashboard",
+    element: <DashboardLayout />,
+    children: [
+      // ! Admin Routes
+      {
+        path: "add-food",
         element: (
           <PrivateRoute>
-            <MyFoods />
+            <AddFood />
           </PrivateRoute>
         ),
       },
@@ -80,21 +91,25 @@ const Router = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`${import.meta.env.VITE_BASE_URL}/food/${params.id}`),
       },
+      { path: "added-foods", element: <AddedFoods /> },
+
+      //! Shared Routes
       {
-        path: "profile",
+        path: "",
         element: (
           <PrivateRoute>
             <Profile />
           </PrivateRoute>
         ),
       },
+      // ! Users routes
       {
-        path: "login",
-        element: <Login />,
-      },
-      {
-        path: "register",
-        element: <Register />,
+        path: "my-foods",
+        element: (
+          <PrivateRoute>
+            <MyFoods />
+          </PrivateRoute>
+        ),
       },
     ],
   },

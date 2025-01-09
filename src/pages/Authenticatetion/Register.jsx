@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import AuthenticationLottie from "../../components/AuthenticationLottie";
 import axios from "axios";
 import Swal from "sweetalert2";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 const Register = () => {
   const { createUser, setUser, updateUserProfile } = useAuth();
