@@ -36,7 +36,7 @@ const Dashboard = () => {
           {/* Shared Links */}
           <div className="divider"></div>
           <li>
-            <NavLink to="/dashboard/profile" className="btn w-full">
+            <NavLink to="/dashboard" className="btn w-full">
               <FaUser /> Profile
             </NavLink>
           </li>
