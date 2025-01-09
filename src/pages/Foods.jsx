@@ -5,7 +5,7 @@ import { Helmet } from "react-helmet-async";
 import useAllFoods from "../hooks/useAllFoods";
 import { useState } from "react";
 
-const AllFoods = () => {
+const Foods = () => {
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState("asc");
   const [foods, isLoading, refetch] = useAllFoods(search, sort);
@@ -66,8 +66,10 @@ const AllFoods = () => {
           ))}
         </div>
       )}
+
+      
     </section>
   );
 };
 
-export default AllFoods;
+export default Foods;

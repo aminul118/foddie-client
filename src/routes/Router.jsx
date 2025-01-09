@@ -3,7 +3,7 @@ import MainLayout from "../Layouts/MainLayout";
 import Login from "../pages/Authenticatetion/Login";
 import Register from "../pages/Authenticatetion/Register";
 import Home from "../pages/Home";
-import AllFoods from "../pages/AllFoods";
+import AllFoods from "../pages/Foods";
 import Gallery from "../pages/Gallery";
 import AddFood from "../pages/AddFood";
 import Profile from "../pages/Profile";
