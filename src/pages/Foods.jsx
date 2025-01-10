@@ -8,7 +8,14 @@ import { useState } from "react";
 const Foods = () => {
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState("asc");
-  const [foods, isLoading, refetch] = useAllFoods(search, sort);
+  const [foodPerPage, setFoodPerPage] = useState(12);
+  const [selectedPage, setSelectedPage] = useState(1);
+  const [{ totalFood, foods }, isLoading, refetch] = useAllFoods(
+    search,
+    sort,
+    selectedPage,
+    foodPerPage
+  );
   console.log(search);
 
   const handleSearch = (e) => {
@@ -21,6 +28,18 @@ const Foods = () => {
   const HandleReset = () => {
     setSearch("");
     setSort("");
+  };
+
+  const page = Math.ceil(totalFood / foodPerPage);
+
+  const pagination = [];
+  for (let i = 1; i < page + 1; i++) {
+    pagination.push(i);
+  }
+
+  const handleSelectedPage = (num) => {
+    setSelectedPage(num);
+    console.log(num);
   };
 
   return (
@@ -50,7 +69,7 @@ const Foods = () => {
             placeholder="Search...."
             className="w-full px-4 h-12 text-gray-700 outline-none border-0 focus:border-blue-500"
           />
-          <button onClick={HandleReset} className="btn">
+          <button onChange={HandleReset} className="btn">
             Reset
           </button>
         </div>
@@ -66,8 +85,17 @@ const Foods = () => {
           ))}
         </div>
       )}
-
-      
+      <div className="text-center py-8">
+        {pagination.map((p) => (
+          <button
+            onClick={() => handleSelectedPage(p)}
+            className={`btn ${selectedPage === p && "btn-warning"}`}
+            key={p}
+          >
+            {p}
+          </button>
+        ))}
+      </div>
     </section>
   );
 };
