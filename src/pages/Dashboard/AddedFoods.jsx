@@ -5,11 +5,35 @@ import Loading from "../../components/Loading";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const AddedFoods = () => {
-  const [foods, isLoading, refetch] = useAllFoods();
+  const [search, setSearch] = useState("");
+  const [sort, setSort] = useState("asc");
+  const [foodPerPage, setFoodPerPage] = useState(20);
+  const [selectedPage, setSelectedPage] = useState(1);
+  const [{ totalFood, foods }, isLoading, refetch] = useAllFoods(
+    search,
+    sort,
+    selectedPage,
+    foodPerPage
+  );
+
+  const page = Math.ceil(totalFood / foodPerPage);
+
+  const pagination = [];
+  for (let i = 1; i < page + 1; i++) {
+    pagination.push(i);
+  }
+
+  const handleSelectedPage = (num) => {
+    setSelectedPage(num);
+    console.log(num);
+  };
+
   const axiosSecure = useAxiosSecure();
   if (isLoading) return <Loading />;
+
   const handleDeleteFood = (food) => {
     // console.log(food);
     Swal.fire({
@@ -93,6 +117,17 @@ const AddedFoods = () => {
             </tbody>
             {/* foot */}
           </table>
+          <div className="text-center py-8">
+            {pagination.map((p) => (
+              <button
+                onClick={() => handleSelectedPage(p)}
+                className={`btn ${selectedPage === p && "btn-warning"}`}
+                key={p}
+              >
+                {p}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
     </div>

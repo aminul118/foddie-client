@@ -53,14 +53,6 @@ const Router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
-      {
-        path: "my-orders",
-        element: (
-          <PrivateRoute>
-            <MyOrders />
-          </PrivateRoute>
-        ),
-      },
 
       {
         path: "login",
@@ -108,6 +100,14 @@ const Router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <MyFoods />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "my-orders",
+        element: (
+          <PrivateRoute>
+            <MyOrders />
           </PrivateRoute>
         ),
       },

@@ -2,7 +2,7 @@ import { FaHome } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import Heading from "../../../components/Heading";
 import { FaUser, FaUtensils } from "react-icons/fa6";
-import { IoFastFoodSharp } from "react-icons/io5";
+import { IoFastFoodSharp, IoFastFoodOutline } from "react-icons/io5";
 const Dashboard = () => {
   const admin = true;
   return (
@@ -27,8 +27,8 @@ const Dashboard = () => {
           ) : (
             <>
               <li>
-                <NavLink to="/dashboard/my-foods" className="btn w-full">
-                  Cart
+                <NavLink to="/dashboard/my-orders" className="btn w-full">
+                  <IoFastFoodOutline /> My Orders
                 </NavLink>
               </li>
             </>

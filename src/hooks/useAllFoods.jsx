@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "./useAxiosPublic";
 
-const useAllFoods = (search = "", sort, selectedPage, foodPerPage) => {
+const useAllFoods = (search = "", sort = "asc", selectedPage, foodPerPage) => {
   const axiosPublic = useAxiosPublic();
   const {
     data = [],
