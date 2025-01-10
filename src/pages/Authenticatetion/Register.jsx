@@ -58,17 +58,17 @@ const Register = () => {
       photo,
     };
 
-    console.log({ email, pass, name, photo });
+    // console.log({ email, pass, name, photo });
 
     // Final Validation Check
     if (passwordError || pass.length === 0) {
-      console.log("Password validation failed:", passwordError);
+      // console.log("Password validation failed:", passwordError);
       return;
     }
 
     try {
       const result = await createUser(email, pass);
-      console.log(result);
+      // console.log(result);
 
       // Make sure to check for `result.user` before using it
       const user = result.user;
@@ -83,7 +83,7 @@ const Register = () => {
       await axios
         .post(`${import.meta.env.VITE_BASE_URL}/users`, newUser)
         .then((res) => {
-          console.log(res.data);
+          // console.log(res.data);
           if (res.data?.insertedId) {
             Swal.fire({
               title: "Good job!",
@@ -94,7 +94,7 @@ const Register = () => {
           navigate("/login");
         });
     } catch (err) {
-      console.log("ERROR:", err);
+      // console.log("ERROR:", err);
       Swal.fire({
         title: "Error!",
         text: err.message,

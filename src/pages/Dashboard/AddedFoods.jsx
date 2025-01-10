@@ -28,7 +28,7 @@ const AddedFoods = () => {
 
   const handleSelectedPage = (num) => {
     setSelectedPage(num);
-    console.log(num);
+    // console.log(num);
   };
 
   const axiosSecure = useAxiosSecure();

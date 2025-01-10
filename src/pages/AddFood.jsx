@@ -18,7 +18,7 @@ const AddFood = () => {
     initialData.addedBy = { userName, email };
     initialData.purchased_count = 0;
 
-    console.log(initialData);
+    // console.log(initialData);
     try {
       const res = await axiosSecure.post("/add-food", initialData);
       if (res.data.insertedId) {
@@ -35,7 +35,7 @@ const AddFood = () => {
         text: "Failed to add food. Please try again.",
         icon: "error",
       });
-      console.error(error);
+      // console.error(error);
     }
   };
 

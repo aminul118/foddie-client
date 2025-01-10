@@ -6,7 +6,7 @@ import { Helmet } from "react-helmet-async";
 
 const Profile = () => {
   const { user, logOut } = useAuth();
-  console.log(user);
+  // console.log(user);
 
   return (
     <section className="min-h-[calc(100vh-304px)] flex items-center">

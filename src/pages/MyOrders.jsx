@@ -44,7 +44,7 @@ const MyOrders = () => {
       });
     },
     onError: (error) => {
-      console.error("Failed to delete the order:", error);
+      // console.error("Failed to delete the order:", error);
       Swal.fire({
         title: "Error!",
         text: "Failed to delete the order. Please try again later.",

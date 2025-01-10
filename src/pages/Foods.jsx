@@ -16,7 +16,7 @@ const Foods = () => {
     selectedPage,
     foodPerPage
   );
-  console.log(search);
+  // console.log(search);
 
   const handleSearch = (e) => {
     setSearch(e.target.value);
@@ -39,7 +39,7 @@ const Foods = () => {
 
   const handleSelectedPage = (num) => {
     setSelectedPage(num);
-    console.log(num);
+    // console.log(num);
   };
 
   return (

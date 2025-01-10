@@ -64,7 +64,7 @@ const AuthProvider = ({ children }) => {
               }
             )
             .then((res) => {
-              console.log("JWT token:", res.data);
+              // console.log("JWT token:", res.data);
               setLoading(false);
             })
             .catch((err) => {
@@ -79,7 +79,7 @@ const AuthProvider = ({ children }) => {
             { withCredentials: true }
           )
           .then((res) => {
-            console.log("Log out", res.data);
+            // console.log("Log out", res.data);
           });
         // console.log("User signed out");
         setUser(null);

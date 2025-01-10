@@ -39,7 +39,7 @@ const ContactUs = () => {
           text: "Something went wrong. Please try again later.",
           icon: "error",
         });
-        console.error("EmailJS Error:", error.text);
+        // console.error("EmailJS Error:", error.text);
       }
     );
   };

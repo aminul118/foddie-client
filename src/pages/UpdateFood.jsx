@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet-async";
 
 const UpdateFood = () => {
   const { id } = useParams();
-  console.log(id);
+  // console.log(id);
   const [food] = useFoodById(id);
   const { food_name, food_image, food_category, quantity, price, origin } =
     food;

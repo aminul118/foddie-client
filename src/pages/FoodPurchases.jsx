@@ -109,7 +109,7 @@ const FoodPurchases = () => {
             icon: "success",
             confirmButtonText: "OK",
           }).then(() => {
-            navigate("/my-orders");
+            navigate("/dashboard/my-orders");
           });
         }
       })
