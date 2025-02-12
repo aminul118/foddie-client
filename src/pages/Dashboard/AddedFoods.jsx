@@ -24,6 +24,7 @@ const AddedFoods = () => {
   const pagination = [];
   for (let i = 1; i < page + 1; i++) {
     pagination.push(i);
+    
   }
 
   const handleSelectedPage = (num) => {
