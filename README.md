@@ -1,5 +1,8 @@
 # 🍽️ Restaurant Management Website name Foddie
 
+![Foddie Image](/src/assets/foddie.png)
+
+
 A full-stack **Restaurant Management Website** built using the **MERN Stack (MongoDB, Express.js, React.js, Node.js)** to streamline restaurant operations, enhance customer interaction, and provide a seamless user experience.
 
 ## 🚀 Live Demo

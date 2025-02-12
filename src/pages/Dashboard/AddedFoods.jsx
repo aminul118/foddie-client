@@ -24,7 +24,7 @@ const AddedFoods = () => {
   const pagination = [];
   for (let i = 1; i < page + 1; i++) {
     pagination.push(i);
-    
+
   }
 
   const handleSelectedPage = (num) => {
@@ -32,7 +32,7 @@ const AddedFoods = () => {
     // console.log(num);
   };
 
-  const axiosSecure = useAxiosSecure();
+  const axiosSecure = useAxiosSecure();   
   if (isLoading) return <Loading />;
 
   const handleDeleteFood = (food) => {
